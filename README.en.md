@@ -493,3 +493,9 @@ This README replaces the earlier wave-by-wave progress README; the original text
 [`docs/archive/README-2026-11-11-wave-log.md`](docs/archive/README-2026-11-11-wave-log.md) as the
 development record and acceptance index for 2026-11-07 … 2026-11-11 (test-baseline evolution, packaging
 status, activation steps and remaining to-dos).
+
+## License
+
+The code itself is released under the [MIT license](LICENSE). Third-party assets — models, motions and
+voice lines — are **not** included in this repository and remain subject to their own rights holders'
+terms (see "Red lines"); MIT does not cover them.
