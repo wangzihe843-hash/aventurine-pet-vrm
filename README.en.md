@@ -494,6 +494,19 @@ This README replaces the earlier wave-by-wave progress README; the original text
 development record and acceptance index for 2026-11-07 … 2026-11-11 (test-baseline evolution, packaging
 status, activation steps and remaining to-dos).
 
+## Credits and referenced projects
+
+| Project | Use | Note |
+|---|---|---|
+| [Mate-Engine](https://github.com/shinyflvre/Mate-Engine) | **Reference** for its animation list, poses and state breakdown | **No code or animation asset was copied**; its animation assets are © Shiny and may not be redistributed separately |
+| [reze-rig](https://github.com/AmyangXYZ/reze-rig) (MIT) | Cross-check for the v1 VMD route | Reference only; unused since Phase 3 |
+| [dsh-blender-plugin](https://github.com/sixtysevenlf/dsh-blender-plugin) | Reference for Blender automation tooling | Referenced as needed, nothing copied |
+| [Reze MiPo](https://mipo.reze.one) (GPL-3.0) | Optional external camera/video mocap tool | Not bundled; documentation only |
+| [VRMify](https://github.com/JiGuang283/VRMify) | PMX → VRM conversion tool | External tool, not bundled |
+
+All of the above are reference or external-tool relationships; their licenses are **independent of** this
+repository's MIT license and grant no rights over this repository's code.
+
 ## License
 
 The code itself is released under the [MIT license](LICENSE). Third-party assets — models, motions and

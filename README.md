@@ -450,6 +450,18 @@ assets/
 作为 2026-11-07 ~ 2026-11-11 的开发记录与验收索引（含各 Wave 的测试基线演进、打包现状、
 激活步骤与遗留待办）。
 
+## 参考项目与致谢
+
+| 项目 | 用途 | 说明 |
+|---|---|---|
+| [Mate-Engine](https://github.com/shinyflvre/Mate-Engine) | 动画清单、姿态与状态划分的**参考** | **未复制其代码或动画资产**；其动画资产版权归 Shiny，按其许可证个人非商业使用需署名、不得单独再分发 |
+| [reze-rig](https://github.com/AmyangXYZ/reze-rig)（MIT） | v1 的 VMD 路线对照 | 仅对照，Phase 3 起未使用 |
+| [dsh-blender-plugin](https://github.com/sixtysevenlf/dsh-blender-plugin) | Blender 自动化工具参考 | 按需参考，未复制 |
+| [Reze MiPo](https://mipo.reze.one)（GPL-3.0） | 摄像头 / 视频动捕（可选外部工具） | 代码未引入本仓库，仅文档指引自行使用 |
+| [VRMify](https://github.com/JiGuang283/VRMify) | PMX → VRM 转换工具 | 外部工具，未打包 |
+
+以上均为「参考 / 外部工具」关系，其许可证与本仓库的 MIT **相互独立**，不构成对本仓库代码的再授权。
+
 ## 许可证
 
 代码本体以 [MIT](LICENSE) 发布。仓库内**不包含**模型、动作、台词等第三方版权资产，
