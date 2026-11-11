@@ -1,0 +1,131 @@
+{
+ "schemaVersion": 1,
+ "source": {
+  "name": "fixture"
+ },
+ "sampling": {
+  "fps": 30,
+  "sourceFps": 60,
+  "neutralTake": "emo_default",
+  "takes": [
+   {
+    "id": "emo_default",
+    "pattern": "emo_default"
+   },
+   {
+    "id": "cal_brow_angry",
+    "pattern": "cal_brow_angry"
+   },
+   {
+    "id": "cal_eye_close",
+    "pattern": "cal_eye_close"
+   },
+   {
+    "id": "cal_eye_smile",
+    "pattern": "cal_eye_smile"
+   },
+   {
+    "id": "cal_mouth_open",
+    "pattern": "cal_mouth_open"
+   },
+   {
+    "id": "clip_angry",
+    "pattern": "clip_angry"
+   }
+  ]
+ },
+ "layers": {
+  "brow": [
+   "browA",
+   "browB"
+  ],
+  "eye": [
+   "eyeA"
+  ],
+  "mouth": [
+   "mouthA"
+  ],
+  "gaze": [
+   "gazeA"
+  ]
+ },
+ "calibration": [
+  {
+   "channel": "brow_angry",
+   "take": "cal_brow_angry",
+   "frame": 0,
+   "layer": "brow"
+  },
+  {
+   "channel": "eye_close01",
+   "take": "cal_eye_close",
+   "frame": 0,
+   "layer": "eye"
+  },
+  {
+   "channel": "eye_close02",
+   "take": "cal_eye_smile",
+   "frame": 0,
+   "layer": "eye"
+  },
+  {
+   "channel": "mouth_open",
+   "take": "cal_mouth_open",
+   "frame": 0,
+   "layer": "mouth"
+  }
+ ],
+ "decomposition": {
+  "maxBases": 2,
+  "residualTolerance": 0.03,
+  "correlationFloor": 0.02
+ },
+ "derived": {
+  "eye_smile": {
+   "op": "max",
+   "inputs": [
+    "eye_close02"
+   ]
+  }
+ },
+ "presetRules": {
+  "angry": [
+   [
+    "brow_angry",
+    0.6
+   ],
+   [
+    "eye_close01",
+    0.4
+   ]
+  ],
+  "happy": [
+   [
+    "eye_smile",
+    1.0
+   ]
+  ]
+ },
+ "presetGates": {
+  "happy": [
+   "brow_angry"
+  ]
+ },
+ "clips": [
+  {
+   "id": "testAngry",
+   "take": "clip_angry",
+   "loop": true,
+   "fadeInSec": 0.1,
+   "fadeOutSec": 0.2,
+   "priority": 1,
+   "triggers": [
+    "angry"
+   ],
+   "tags": [
+    "test"
+   ],
+   "note": "fixture"
+  }
+ ]
+}

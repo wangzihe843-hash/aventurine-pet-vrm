@@ -1,0 +1,19 @@
+{
+  "name": "aventurine-reze-vmd-pipeline",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Vendored reze-rig FBX→VMD CLI (MIT) with a minimal local dependency set. Local personal use only.",
+  "license": "MIT",
+  "scripts": {
+    "build": "./build.sh",
+    "convert": "./convert.sh"
+  },
+  "dependencies": {
+    "pako": "^3.0.3",
+    "reze-engine": "0.68.10"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.12"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "propId": "watergun",
+  "file": "props/watergun/watergun.glb",
+  "bone": "rightHand",
+  "position": [-0.072608, 0.010108, 0.031722],
+  "quaternion": [0.545381, -0.533414, -0.499501, 0.410521],
+  "scale": 1,
+  "bounds": {
+    "minLengthMeters": 0.45,
+    "maxLengthMeters": 0.75,
+    "expectedLengthMeters": 0.574
+  },
+  "policy": {
+    "holdSets": ["adv"],
+    "holdTags": ["skill"],
+    "holdClipIds": [
+      "adv-skill01",
+      "adv-mazeattack01",
+      "adv-skill01readybs",
+      "adv-skill01readyloop",
+      "adv-skill01-ready",
+      "adv-skill01-ready-loop",
+      "adv-skill02toskill01"
+    ]
+  },
+  "policyNote": "数据驱动白名单（task-5，2026-11-09）：基于 138 个 _skel.fbx 武器骨探针（held_r 判定）+ 官方实机逐帧对拍。clipIds 使用的是 **app catalog id（adv- 前缀）**；非空即独占（命中=true、未命中=false，不再回落 set+tags），全空时才用 holdSets+holdTags 兜底。证据见 docs/research/watergun-adv-integration.md。",
+  "calibration": {
+    "date": "2026-11-09",
+    "method": "源 .max Skill01 世界枪位 → VRM normalized rightHand 局部偏移（4 帧一致性平均）",
+    "source": "tests/tmp/adv-pilot-v3/fbx-pilot-v2-gui/pilot/{Tpose,Skill01}.fbx",
+    "maxAngleDeviationDeg": 0.36,
+    "positionSpreadMeters": [0.004, 0.0088, 0.0243],
+    "note": "position/quaternion 为挂到 vrm.humanoid.getNormalizedBoneNode('rightHand') 的局部变换（米/three 坐标）；改模型或换 rig 需重标"
+  }
+}

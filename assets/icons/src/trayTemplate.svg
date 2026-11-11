@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <!--
+    占位托盘图标源文件（macOS template image，16×16 逻辑像素）。
+    - 纯黑 + alpha：macOS 会把它当模板图，深浅色菜单栏自动反色。
+    - 图形为自绘的极简「猫头剪影」，无第三方素材，版权风险为零；
+      C4 换正式图标时直接替换本 SVG 并重跑 assets/icons/generate.mjs 即可。
+    - 注意：耳朵与头部分成独立元素（不要合成单个 path 多 subpath），
+      否则重叠区域可能因绕向相反被挖空。
+  -->
+  <circle cx="8" cy="9.1" r="5.2" fill="#000000" />
+  <path fill="#000000" d="M2.6 7.6 L3.4 2.2 L6.4 4.9 Z" />
+  <path fill="#000000" d="M13.4 7.6 L12.6 2.2 L9.6 4.9 Z" />
+</svg>

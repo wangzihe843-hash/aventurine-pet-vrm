@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "name": "Mate-Engine — MATE ENGINE - Animations（FACE_LAYER / PET_MISC / UPDATE_2）",
+    "attribution": "shinyflvre/Mate-Engine（MateEngine Pro License v2.1；仅本机私有参考/派生数据，不再分发）",
+    "note": "出货控制器 = AvatarAnimatorControllerV2 1.controller（Face Layer + Speak Layer，Override 混合、无 AvatarMask）。源 60fps；本配置只列 7 条唯一 face clip（FACE_INTIME 与 FACE_DRAG 逐键位相同、FACE_SMILE 1 与 FACE_SMILE 相同、HoverFace 是全身姿态不含 blendshape，均不重复导出）。fadeInSec/fadeOutSec 照抄 Unity 状态机固定过渡时长。",
+    "controllerFacts": {
+      "layerOrder": ["Base Layer", "Face Layer", "Speak Layer"],
+      "faceClipPriority": ["Drag", "Intime Region", "Hair Stroke", "Head Pat", "Face Loop", "Faceloop"],
+      "transitionSec": {
+        "faceloopToFaceLoop": 0.5,
+        "headPat": 1.0,
+        "drag": 0.2,
+        "intime": 0.2,
+        "hairStroke": 0.25,
+        "talk": 0.05
+      },
+      "blinkNote": "源 face clip 全权定义整脸（Write Defaults=1）：idle 含 blink 轨道；Head Pat/Drag/Intime/Hair Stroke 的 Blink 恒 0（显式不眨眼/闭眼笑）。"
+    }
+  },
+  "aliases": {
+    "joy": "happy",
+    "angry": "angry",
+    "sorrow": "sad",
+    "fun": "relaxed",
+    "neutral": null,
+    "blink": "blink",
+    "blink_l": "blinkLeft",
+    "blink_r": "blinkRight",
+    "a": "aa",
+    "i": "ih",
+    "u": "ou",
+    "e": "ee",
+    "o": "oh"
+  },
+  "clips": [
+    {
+      "id": "faceIdle",
+      "file": "FACE_LAYER/FACE_IDLE_1.anim",
+      "fps": 30,
+      "loop": true,
+      "priority": 0,
+      "fadeInSec": 0.5,
+      "fadeOutSec": 0.5,
+      "triggers": ["idle"],
+      "tags": ["idle", "blink", "loop"],
+      "scale": 1,
+      "note": "Face Loop 待机（10.03s 循环）：Blink 图案（2 次完整眨眼 + 半眨/眯眼）+ E 口型小幅脉冲。源层自带走 blink，播放时程序化眨眼应让位（运行时已实现：clip 含 blink 轨道 → 关程序化 blink）。"
+    },
+    {
+      "id": "faceDrag",
+      "file": "FACE_LAYER/FACE_DRAG.anim",
+      "fps": 30,
+      "loop": true,
+      "priority": 10,
+      "fadeInSec": 0.2,
+      "fadeOutSec": 0.2,
+      "triggers": ["drag", "intime"],
+      "tags": ["reaction", "drag", "loop"],
+      "scale": 1,
+      "note": "Drag 面部（10.03s 循环）：Sorrow 恒 1（sad）+ O 0–0.4 抽气（oh），Blink 显式 0。FACE_INTIME（亲密区域）逐键位相同 → 同一份数据两个触发别名。优先级最高（可从任何 face 状态直达）。"
+    },
+    {
+      "id": "faceSmile",
+      "file": "PET_MISC/FACE_SMILE.anim",
+      "fps": 30,
+      "loop": true,
+      "priority": 9,
+      "fadeInSec": 1.0,
+      "fadeOutSec": 1.0,
+      "triggers": ["pet"],
+      "tags": ["reaction", "pet", "happy", "loop"],
+      "scale": 1,
+      "note": "Head Pat 摸头面部（4s 循环）：Joy 0.7–1.0（happy）+ A 0–0.4（aa）；Blink=0。进入/退出过渡 1.0s（源状态机 exitTime 0.75/0.9375），是摸头观感关键——不要改快。"
+    },
+    {
+      "id": "faceHairStroke",
+      "file": "FACE_LAYER/FACE_HAIR_STROKE.anim",
+      "fps": 30,
+      "loop": true,
+      "priority": 6,
+      "fadeInSec": 0.25,
+      "fadeOutSec": 0.25,
+      "triggers": ["hairStroke"],
+      "tags": ["reaction", "pet", "happy", "loop"],
+      "scale": 1,
+      "note": "Hair Stroke 顺毛面部（10.03s 循环）：Joy 恒 1（happy）+ O 0–0.5（oh），Blink=0。源仅在大屏模式触发；本项目无大屏 → 留作「顺毛/摸头发」交互或手动触发（不进自动推导）。"
+    },
+    {
+      "id": "petHappy",
+      "file": "FACE_LAYER/PET_HAPPY.anim",
+      "fps": 30,
+      "loop": false,
+      "priority": 5,
+      "fadeInSec": 0.15,
+      "fadeOutSec": 0.2,
+      "triggers": ["happy"],
+      "tags": ["reaction", "happy"],
+      "scale": 1,
+      "note": "1s 短促开心（Joy 1→0.8→1 + A 0.25→0→0.25）。源控制器无引用（孤儿素材）→ 作为「被夸/DSH 完成」等一次性反应候选；播放一次即停（loop=false）。"
+    },
+    {
+      "id": "petTalking",
+      "file": "UPDATE_2/PET_TALKING.anim",
+      "fps": 30,
+      "loop": true,
+      "priority": 4,
+      "fadeInSec": 0.05,
+      "fadeOutSec": 0.05,
+      "triggers": ["talk"],
+      "tags": ["viseme", "talk", "loop"],
+      "scale": 1,
+      "note": "Speak Layer 口型（1s 循环）：A(1/6s) → E(1/2s) → O(5/6s) 三个离散脉冲，I/U 恒 0；进入 0.05s。V6 默认用气泡文本驱动口型，本 clip 是 Mate-Engine 同款素材（可用 --use clip 切换）。"
+    },
+    {
+      "id": "faceReset",
+      "file": "FACE_LAYER/FACE_RESET.anim",
+      "fps": 30,
+      "loop": true,
+      "priority": 0,
+      "fadeInSec": 0.5,
+      "fadeOutSec": 0.5,
+      "triggers": ["reset"],
+      "tags": ["reset", "neutral", "loop"],
+      "scale": 1,
+      "note": "Faceloop 默认态（1.98s 循环，13 通道全 0）：无表情 = 全零。作为数据完整性/复位素材保留（业务 neutral 走 expression 全清 0，不需要播放本 clip）。"
+    }
+  ]
+}

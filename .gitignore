@@ -1,0 +1,62 @@
+# --- 依赖/构建产物 ---
+node_modules/
+dist/
+out/
+# electron-builder 签名 entitlements 与后处理钩子需要入库；其余 build/ 产物仍忽略
+build/*
+!build/entitlements.mac.plist
+!build/after-pack-adhoc-sign.cjs
+release/
+coverage/
+*.log
+.DS_Store
+__pycache__/
+*.pyc
+
+# 原生 helper 编译产物（scripts/build-native.mjs 生成 universal + build stamp）。
+# 历史误提交的 native/winlist/.build/{winlist,winlist.stamp} 已 git rm --cached
+# （磁盘文件保留）；干净 clone 后由 predev/prebuild 自动重建。
+native/**/.build/
+
+# --- 私有资产：禁止提交/发布 ---
+# 模型版权归 miHoYo；作者规则禁止二次配布与商用。
+# assets/model/  : 原始 PMX + 贴图（Phase 1/2 遗留，回退用）
+# assets/vrm/    : canary VRM（制服款，用户下载）与转换后的戏浪 VRM（本地生成）
+# assets/motions/
+# 动作数据本地备份（leg 修复会话产物；私有资产，不入库）
+assets/motions-leg-backup-*/
+assets/expressions/: Mixamo/Blender 重定向产出的 glTF/VRMA（授权见 docs）
+assets/model/
+assets/vrm/
+assets/motions/
+assets/expressions/
+# assets/props/ : 从 .max 全场景 FBX 提取的道具（水枪等），同属私有游戏资产
+assets/props/
+# assets/voicelines.json : 游戏内官方语音台词原文（私有内容，不入公开库；缺失时宠物不说话）
+assets/voicelines*.json
+# 兜底：误放在 assets 根目录的模型/压缩包同样不得提交（红线）
+assets/*.zip
+assets/*.vrm
+assets/*.glb
+assets/*.vrma
+# 兜底：任何位置的 PMX 源模型都是私有游戏资产，不得提交（红线）
+*.pmx
+
+# --- 凭据兜底（D-05）---
+# 私钥/证书一律不入库（即使误放到 assets/、docs/、work/ 等子目录）。
+*.key
+*.pem
+
+# --- 参考项目本地克隆（只读参考，不提交） ---
+refs/
+
+# --- 本地 Unity 工程副本/临时 ---
+work/
+
+# --- Unity 烘焙中间产物 ---
+scripts/unity-bake/out/
+scripts/unity-bake/logs/
+
+# --- 本地测试/临时 ---
+tests/tmp/
+.env

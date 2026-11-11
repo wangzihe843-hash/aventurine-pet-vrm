@@ -1,0 +1,20 @@
+# 砂金·戏浪 桌宠 ⇄ DSH 文件桥（host-only，无 client 半）。
+# 只订阅 DSH 事件并写 ~/.dsh/aventurine-pet/{status.json,events.jsonl,control.json}，
+# 不注册工具、不改宿主行为；任何 fs 失败只 warn 不抛。
+- insert:
+    - id: aventurine-bridge
+      name: dsh-aventurine-bridge
+      # 可选配置（默认值即冻结契约；一般不需要写）：
+      # config:
+      #   # 桥目录，默认 ~/.dsh/aventurine-pet（也可用 AVENTURINE_BRIDGE_DIR 环境变量）
+      #   dir: ~/.dsh/aventurine-pet
+      #   # events.jsonl 轮转阈值，默认 5MB
+      #   rotateBytes: 5242880
+      #   # 单行事件上限，默认 64KB
+      #   maxLineBytes: 65536
+      #   # v2：apply 时拉起桌宠一次（默认 false；AVENTURINE_BRIDGE_DISABLE_LAUNCH=1 强制禁用）
+      #   launchPet: false
+      #   # 桌宠 .app 绝对路径（优先级高于 petBundleId；open <path>）
+      #   petAppPath: /Applications/AventurinePet.app
+      #   # 桌宠 bundle id（open -b <id>；与 petAppPath 二选一）
+      #   petBundleId: com.aventurine.pet

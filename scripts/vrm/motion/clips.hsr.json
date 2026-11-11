@@ -1,0 +1,229 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "name": "Honkai: Star Rail — Avatar_Aventurine_00 (官方游戏资源)",
+    "attribution": "miHoYo / HoYoverse（官方模型与动画）；由用户本机从游戏资源包导出",
+    "license": "official-game-asset (private, local-only)",
+    "redistribution": "forbidden-local-only",
+    "fbxNote": "Avatar_Aventurine_00.fbx（约 305MB，135 个 60fps take）；不允许提交/再分发"
+  },
+  "fps": 30,
+  "sourceFps": 60,
+  "requirements": {
+    "idle": 4,
+    "show": 5,
+    "react": 2,
+    "pose": 1
+  },
+  "clips": [
+    {
+      "id": "idle",
+      "takeMatch": "Ani_StandBy|",
+      "srcFrames": 121,
+      "loop": true,
+      "slot": "idle",
+      "tags": [
+        "idle"
+      ],
+      "priority": 10,
+      "grounding": "feet",
+      "timeScale": 1.0,
+      "note": "官方战斗待机 StandBy（2.0s 循环，呼吸/重心微动）——HSR 组主 idle"
+    },
+    {
+      "id": "idle2",
+      "takeMatch": "Ani_TeamStandBy|",
+      "srcFrames": 121,
+      "loop": true,
+      "slot": "idle",
+      "tags": [
+        "idle"
+      ],
+      "priority": 5,
+      "grounding": "feet",
+      "timeScale": 1.0,
+      "note": "官方 TeamStandBy（队伍待机，2.0s 循环）"
+    },
+    {
+      "id": "idleShow",
+      "takeMatch": "Adv_Ani_Idle_Show",
+      "srcFrames": 621,
+      "loop": true,
+      "slot": "idle",
+      "tags": [
+        "idle",
+        "show"
+      ],
+      "priority": 8,
+      "grounding": "feet",
+      "timeScale": 1.0,
+      "note": "官方「站立动作」Idle_Show_01（10.33s）：抬手看手套→双臂张开仰头→回位（B站 wiki 待机动作 1/2 均在此循环内）"
+    },
+    {
+      "id": "idleShow2",
+      "takeMatch": "Adv_Ani_Idle_",
+      "srcFrames": 715,
+      "loop": true,
+      "slot": "idle",
+      "tags": [
+        "idle",
+        "show"
+      ],
+      "priority": 4,
+      "grounding": "feet",
+      "timeScale": 1.0,
+      "note": "官方「站立动作」Idle_Show_02（11.92s）"
+    },
+    {
+      "id": "commonIdle",
+      "takeMatch": "Adv_Ani_Common_Id",
+      "srcFrames": 502,
+      "loop": true,
+      "slot": "idle",
+      "tags": [
+        "idle",
+        "show"
+      ],
+      "priority": 3,
+      "grounding": "feet",
+      "timeScale": 1.0,
+      "note": "官方 Common_IdleShow（8.37s，公共待机表演）"
+    },
+    {
+      "id": "breaked",
+      "takeMatch": "Adv_Ani_Break01Lo",
+      "srcFrames": 161,
+      "loop": true,
+      "slot": null,
+      "tags": [
+        "pose",
+        "weak"
+      ],
+      "priority": 0,
+      "grounding": "none",
+      "hipsBase": "rest",
+      "timeScale": 1.0,
+      "note": "官方破韧待机 Break01Loop（2.67s 循环，趴跪/虚弱姿态；可映射「受伤/躲藏/睡觉」语义，由状态机决定）"
+    },
+    {
+      "id": "skill01",
+      "takeMatch": "Ani_Skill01|",
+      "srcFrames": 133,
+      "loop": false,
+      "slot": null,
+      "tags": [
+        "show",
+        "skill"
+      ],
+      "priority": 0,
+      "grounding": "none",
+      "timeScale": 1.0,
+      "note": "官方战技 Skill01（2.2s，筹码/运气表演）——事件/展示触发"
+    },
+    {
+      "id": "skill02",
+      "takeMatch": "Ani_Skill02|",
+      "srcFrames": 120,
+      "loop": false,
+      "slot": null,
+      "tags": [
+        "show",
+        "skill"
+      ],
+      "priority": 0,
+      "grounding": "none",
+      "timeScale": 1.0,
+      "note": "官方战技 Skill02（1.98s）"
+    },
+    {
+      "id": "skill03",
+      "takeMatch": "Ani_Skill03|",
+      "srcFrames": 478,
+      "loop": false,
+      "slot": null,
+      "tags": [
+        "show",
+        "skill"
+      ],
+      "priority": 0,
+      "grounding": "none",
+      "timeScale": 1.0,
+      "note": "官方终结技 Skill03（7.95s）"
+    },
+    {
+      "id": "mazeSkill",
+      "takeMatch": "Ani_MazeSkill01|",
+      "srcFrames": 179,
+      "loop": false,
+      "slot": null,
+      "tags": [
+        "show",
+        "skill"
+      ],
+      "priority": 0,
+      "grounding": "none",
+      "timeScale": 1.0,
+      "note": "官方秘技 MazeSkill01（2.97s）"
+    },
+    {
+      "id": "passiveSkill",
+      "takeMatch": "Ani_PassiveSkill|",
+      "srcFrames": 232,
+      "loop": false,
+      "slot": null,
+      "tags": [
+        "show",
+        "skill"
+      ],
+      "priority": 0,
+      "grounding": "none",
+      "timeScale": 1.0,
+      "note": "官方天赋 PassiveSkill（3.85s）"
+    },
+    {
+      "id": "hitL",
+      "takeMatch": "Ani_Hit_L|",
+      "srcFrames": 96,
+      "loop": false,
+      "slot": null,
+      "tags": [
+        "react"
+      ],
+      "priority": 0,
+      "grounding": "none",
+      "hipsBase": "rest",
+      "timeScale": 1.0,
+      "note": "官方受击 Hit_L（1.58s）——可映射 dshError/拖拽反应"
+    },
+    {
+      "id": "stun",
+      "takeMatch": "Ani_State_Stun|",
+      "srcFrames": 110,
+      "loop": false,
+      "slot": null,
+      "tags": [
+        "react"
+      ],
+      "priority": 0,
+      "grounding": "none",
+      "hipsBase": "rest",
+      "timeScale": 1.0,
+      "note": "官方眩晕 State_Stun（1.82s）"
+    },
+    {
+      "id": "revive",
+      "takeMatch": "Ani_Revive|",
+      "srcFrames": 91,
+      "loop": false,
+      "slot": null,
+      "tags": [
+        "react"
+      ],
+      "priority": 0,
+      "grounding": "none",
+      "hipsBase": "rest",
+      "timeScale": 1.0,
+      "note": "官方复活 Revive（1.5s）"
+    }
+  ]
+}

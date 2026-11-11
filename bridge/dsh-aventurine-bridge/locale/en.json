@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Aventurine pet bridge",
+    "description": "Writes DSH agent status and durable task events to ~/.dsh/aventurine-pet so the Aventurine desktop pet can react."
+  }
+}

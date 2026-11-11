@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>砂金·戏浪 — 设置</title>
+    <!--
+      设置窗独立页面（Wave 2 B6；第二入口由 Lead 预置，见 PLAN §7/§19.6）。
+      CSP 比 overlay 更严格：设置窗不需要 pet-asset://（不加载模型），
+      因此不放开 img-src pet-asset: / connect-src ws:；dev HMR 仍需 ws:（electron-vite）与
+      内联样式（沿用 'unsafe-inline'，但本页样式全部走独立 settings.css）。
+      禁止内联 <script> / eval：交互逻辑在 ./src/settings/main.ts（module）。
+    -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' ws:"
+    />
+    <link rel="stylesheet" href="./src/settings/settings.css" />
+  </head>
+  <body>
+    <!--
+      B6 设置页（原生 DOM + 自写 CSS；不引 UI 框架/依赖）。
+      #settings-root 与底部 module script 入口是 Lead 的 settings-window.ts / 第二入口契约，
+      不得改名或移除。
+    -->
+    <div id="settings-root" class="settings">
+      <header class="app-header">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <div class="brand-text">
+            <h1 class="brand-title">砂金·戏浪</h1>
+            <p class="brand-subtitle">桌面宠物 · 设置</p>
+          </div>
+        </div>
+        <p class="brand-quote">“账都记我名下。”</p>
+      </header>
+
+      <main class="settings-body">
+        <section class="card" aria-labelledby="appearance-title">
+          <h2 id="appearance-title" class="card-title">外观</h2>
+
+          <div class="field">
+            <div class="field-head">
+              <label class="field-label" for="size-range">宠物尺寸</label>
+              <output class="field-value" id="size-value" for="size-range">50%</output>
+            </div>
+            <input
+              class="range"
+              type="range"
+              id="size-range"
+              min="10"
+              max="100"
+              step="1"
+              value="50"
+              aria-describedby="size-px size-hint"
+            />
+            <div class="field-meta">
+              <span id="size-px">约 540 px 高</span>
+              <span id="size-hint" class="field-hint"></span>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="field-head">
+              <label class="field-label" for="opacity-range">不透明度</label>
+              <output class="field-value" id="opacity-value" for="opacity-range">100%</output>
+            </div>
+            <input
+              class="range"
+              type="range"
+              id="opacity-range"
+              min="0.3"
+              max="1"
+              step="0.05"
+              value="1"
+            />
+            <div class="field-meta">
+              <span class="field-hint">调低后更不打扰桌面</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="card" aria-labelledby="behavior-title">
+          <h2 id="behavior-title" class="card-title">行为</h2>
+
+          <div class="row">
+            <div class="row-text">
+              <span class="row-label">自主活动</span>
+              <span class="row-desc">允许他自己走动、发呆、盘筹码</span>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="autonomous-toggle" />
+              <span class="switch-track" aria-hidden="true"></span>
+              <span class="sr-only">自主活动</span>
+            </label>
+          </div>
+
+          <div class="field" id="autonomous-level-field">
+            <span class="field-label" id="autonomous-level-label">活动频率</span>
+            <div class="segmented" role="group" aria-labelledby="autonomous-level-label">
+              <button type="button" class="segmented-btn" data-autonomous-level="low">
+                安静
+              </button>
+              <button type="button" class="segmented-btn" data-autonomous-level="normal">
+                正常
+              </button>
+              <button type="button" class="segmented-btn" data-autonomous-level="high">
+                活跃
+              </button>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="row-text">
+              <span class="row-label">捣乱</span>
+              <span class="row-desc">允许扒窗口、推窗之类的小恶作剧</span>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="mischief-toggle" />
+              <span class="switch-track" aria-hidden="true"></span>
+              <span class="sr-only">捣乱</span>
+            </label>
+          </div>
+        </section>
+
+        <section class="card" aria-labelledby="dsh-title">
+          <h2 id="dsh-title" class="card-title">DSH 联动</h2>
+
+          <div class="row">
+            <div class="row-text">
+              <span class="row-label">跟随 DSH 任务</span>
+              <span class="row-desc">任务开始/完成/出错时做出对应表演</span>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="dshlink-toggle" />
+              <span class="switch-track" aria-hidden="true"></span>
+              <span class="sr-only">DSH 联动</span>
+            </label>
+          </div>
+
+          <div class="row">
+            <div class="row-text">
+              <span class="row-label">与 DeepSeek Harness 同生共死（双向保活）</span>
+              <span class="row-desc">任一方启动或退出，另一方跟随（需安装桥插件）</span>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="dsh-coupling-toggle" />
+              <span class="switch-track" aria-hidden="true"></span>
+              <span class="sr-only">与 DeepSeek Harness 同生共死（双向保活）</span>
+            </label>
+          </div>
+
+          <div class="row">
+            <div class="row-text">
+              <span class="row-label">头顶气泡同步 DSH 回复</span>
+              <span class="row-desc">思考中显示「思考中…」，每段回复落到头顶气泡</span>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="dsh-bubble-sync-toggle" />
+              <span class="switch-track" aria-hidden="true"></span>
+              <span class="sr-only">头顶气泡同步 DSH 回复</span>
+            </label>
+          </div>
+
+          <div class="status-line" id="dsh-status-line">
+            <span class="status-dot" id="dsh-status-dot" aria-hidden="true"></span>
+            <span class="status-text" id="dsh-status-text">检测中…</span>
+          </div>
+        </section>
+
+        <section class="card" aria-labelledby="system-title">
+          <h2 id="system-title" class="card-title">显示与系统</h2>
+
+          <div class="field">
+            <div class="field-head">
+              <label class="field-label" for="fps-range">帧率上限</label>
+              <output class="field-value" id="fps-value" for="fps-range">30 FPS</output>
+            </div>
+            <input class="range" type="range" id="fps-range" min="5" max="60" step="1" value="30" />
+            <div class="field-meta">
+              <span class="field-hint">越高越流畅，但更耗电</span>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="row-text">
+              <span class="row-label">开机自启</span>
+              <span class="row-desc">登录 macOS 后自动启动</span>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="launch-at-login-toggle" />
+              <span class="switch-track" aria-hidden="true"></span>
+              <span class="sr-only">开机自启</span>
+            </label>
+          </div>
+
+          <div class="row">
+            <div class="row-text">
+              <span class="row-label">音效</span>
+              <span class="row-desc">互动与庆祝时播放轻音效</span>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="sound-toggle" />
+              <span class="switch-track" aria-hidden="true"></span>
+              <span class="sr-only">音效</span>
+            </label>
+          </div>
+
+          <div class="permissions">
+            <div class="perm-row">
+              <span class="perm-label">辅助功能权限</span>
+              <span class="badge" id="permission-accessibility">检测中…</span>
+            </div>
+            <div class="perm-row">
+              <span class="perm-label">通知权限</span>
+              <span class="badge" id="permission-notifications">检测中…</span>
+            </div>
+            <button type="button" class="link-btn" id="refresh-status">重新检测权限与 DSH 状态</button>
+          </div>
+        </section>
+      </main>
+
+      <footer class="settings-footer">
+        <button type="button" class="btn btn-ghost" id="restore-defaults">恢复默认</button>
+        <span class="save-state" id="save-state" role="status" aria-live="polite">加载中…</span>
+      </footer>
+    </div>
+    <script type="module" src="./src/settings/main.ts"></script>
+  </body>
+</html>

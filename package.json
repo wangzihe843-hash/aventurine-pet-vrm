@@ -1,0 +1,56 @@
+{
+  "name": "aventurine-pet",
+  "version": "0.1.0",
+  "description": "砂金·戏浪 — macOS 3D 桌面宠物（独立 Electron 应用）",
+  "author": "Aventurine Pet (local private use)",
+  "main": "./out/main/index.js",
+  "private": true,
+  "packageManager": "pnpm@10.20.0",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "predev": "node scripts/build-native.mjs",
+    "predev:worktree": "node scripts/build-native.mjs",
+    "dev": "ELECTRON_RUN_AS_NODE= electron-vite dev",
+    "dev:worktree": "PROFILE=\"$(bash scripts/print-profile.sh \"$PWD\")\" && ELECTRON_RUN_AS_NODE= PET_PROFILE=\"$PROFILE\" electron-vite dev",
+    "start": "ELECTRON_RUN_AS_NODE= electron-vite preview",
+    "smoke": "node scripts/build-native.mjs && ELECTRON_RUN_AS_NODE= PET_SMOKE_TEST=1 electron-vite dev",
+    "smoke:file": "pnpm build && node scripts/build-native.mjs && ELECTRON_RUN_AS_NODE= PET_SMOKE_TEST=1 electron .",
+    "typecheck:node": "tsc --noEmit -p tsconfig.node.json --composite false",
+    "typecheck:web": "tsc --noEmit -p tsconfig.web.json --composite false",
+    "typecheck": "pnpm run typecheck:node && pnpm run typecheck:web",
+    "prebuild": "node scripts/prebuild.mjs",
+    "build": "pnpm run typecheck && electron-vite build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "dsh:canary": "node scripts/dsh-canary.mjs",
+    "package:dir": "pnpm build && pnpm exec electron-builder --mac dir --publish never && node scripts/package-check.mjs",
+    "package:check": "node scripts/package-check.mjs",
+    "assets:prepare": "node scripts/prepare-assets.mjs",
+    "postinstall": "install-electron",
+    "native:build": "node scripts/build-native.mjs",
+    "native:check": "node scripts/build-native.mjs --check"
+  },
+  "dependencies": {
+    "@electron-toolkit/utils": "^4.0.0"
+  },
+  "devDependencies": {
+    "@electron-toolkit/tsconfig": "^2.0.0",
+    "@pixiv/three-vrm": "3.5.5",
+    "@pixiv/three-vrm-animation": "3.5.5",
+    "@types/node": "^24.19.2",
+    "@types/three": "0.171.0",
+    "@vitest/coverage-v8": "5.1.0",
+    "electron": "^44.7.2",
+    "electron-builder": "26.18.0",
+    "electron-vite": "^6.0.0",
+    "mmd-parser": "^1.1.4",
+    "sharp": "0.35.5",
+    "three": "0.171.0",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.4",
+    "vitest": "^5.1.0"
+  }
+}

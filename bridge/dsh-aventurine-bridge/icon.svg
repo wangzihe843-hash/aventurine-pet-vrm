@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" role="img" aria-label="Aventurine pet bridge">
+  <title>Aventurine pet bridge</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#12333a"/>
+      <stop offset="1" stop-color="#1d4a4f"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f6df9a"/>
+      <stop offset="1" stop-color="#d9a441"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="88" height="88" rx="20" fill="url(#bg)"/>
+  <path d="M14 60 C26 42 70 42 82 60" fill="none" stroke="url(#gold)" stroke-width="5" stroke-linecap="round"/>
+  <path d="M14 60 H82" fill="none" stroke="#e8c877" stroke-width="3" stroke-linecap="round" opacity="0.85"/>
+  <path d="M22 60 V68 M74 60 V68" fill="none" stroke="#e8c877" stroke-width="3.5" stroke-linecap="round"/>
+  <circle cx="48" cy="34" r="6" fill="url(#gold)"/>
+  <path d="M48 24 L50.2 29.4 L56 31 L51 34.4 L52.2 40 L48 36.8 L43.8 40 L45 34.4 L40 31 L45.8 29.4 Z" fill="#f8ecc4" opacity="0.95"/>
+  <circle cx="30" cy="52" r="2.2" fill="#f8ecc4"/>
+  <circle cx="66" cy="52" r="2.2" fill="#f8ecc4"/>
+</svg>

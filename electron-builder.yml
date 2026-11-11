@@ -1,0 +1,78 @@
+# 砂金·戏浪 桌面宠物 —— electron-builder 打包配置（Wave 3 / V9）
+#
+# 目标：本机自用、**ad-hoc 签名**的 `AventurinePet.app`（mac dir 目标）。
+# - 不启用 Developer ID 签名 / hardenedRuntime / notarize：本机当前 0 个有效 codesigning identity，
+#   签名身份属于「正式分发前置」，见 docs/packaging.md §2.1/§4。
+# - 但完全无签名的产物会被 macOS 27 AMFI 拒绝启动（no CMS blob → 立即退出），
+#   因此由 `afterPack` 钩子做 ad-hoc 签名（build/after-pack-adhoc-sign.cjs）；本机自用足够，
+#   对外分发仍需 Developer ID + 公证。
+# - 本仓库的模型/动作/语音为私有资产（版权禁止二次配布），因此**打包产物仅限本机使用，不得分发**。
+# - 产物目录 dist/ 已由 .gitignore 忽略，不随仓库提交。
+#
+# 常用命令（package.json scripts 由 Lead 添加，见 docs/wave3-packaging-report-2026-11-11.md）：
+#   pnpm exec electron-builder --mac dir     # 产出 dist/mac-arm64/AventurinePet.app（ad-hoc 签名）
+#   node scripts/package-check.mjs           # 校验产物 bundle id / Resources / helper 架构
+
+appId: com.aventurine.pet
+productName: AventurinePet
+copyright: >-
+  Local use only. Bundled model/voice/motion assets are copyrighted by miHoYo;
+  redistribution is forbidden. See README.md red lines.
+
+directories:
+  output: dist
+  buildResources: build
+
+# 只打包 electron-vite 生产构建（out/）+ package.json。
+# 运行时生产依赖（package.json dependencies，如 @electron-toolkit/utils）由 electron-builder
+# 自动按生产依赖收集进 app.asar；devDependencies 不会被打包。
+files:
+  - out/**
+  - package.json
+
+# 复用 node_modules/electron/dist，避免打包时联网下载 Electron（版本由 devDependencies 固定）。
+electronDist: node_modules/electron/dist
+# 无原生 node 模块需要 rebuild（renderer/main 依赖均由 electron-vite 打包或纯 JS）。
+npmRebuild: false
+
+# 打包后 ad-hoc 签名（本机自用；见 build/after-pack-adhoc-sign.cjs 的详细说明）。
+afterPack: build/after-pack-adhoc-sign.cjs
+
+mac:
+  target:
+    - target: dir
+  category: public.app-category.entertainment
+  # identity: null = 跳过 codesign（未签名本机包）；正式分发时改为 Developer ID 并启用下方项。
+  identity: null
+  hardenedRuntime: false
+  notarize: false
+  entitlements: build/entitlements.mac.plist
+  entitlementsInherit: build/entitlements.mac.plist
+  minimumSystemVersion: "13.0"
+  extendInfo:
+    # Electron 44 的最低支持系统版本；与 packaging.md §2.1 要求一致。
+    LSMinimumSystemVersion: "13.0"
+
+# 运行时资源映射：目标路径必须与 src/main/protocol.ts / src/main/desktop/winlist.ts / src/main/tray.ts
+# 的 packaged 分支保持一致（改动要同步 docs/packaging.md §2.2）。
+# 注意：electron-builder 对缺失的 extraResources 源只 warn 不失败，干净 clone（无私有资产）时
+# 产物可构建但不可渲染；打包前请先准备 assets/ 或按 docs/packaging.md §2.4 显式跳过校验。
+extraResources:
+  # 窗口枚举 helper（universal arm64+x86_64，minos 13.0）
+  - from: native/winlist/.build/winlist
+    to: native/winlist/winlist
+  # PMX 回退模型：只打包 optimize 产物，不打原始 assets/model/ 整棵树
+  - from: assets/model/optimized
+    to: model
+  # 托盘/应用图标（tracked 资源）
+  - from: assets/icons
+    to: assets/icons
+  # 私有资产（不进 git；存在才打包，缺失时 electron-builder 只 warn）
+  - from: assets/vrm
+    to: assets/vrm
+  - from: assets/motions
+    to: assets/motions
+  - from: assets/expressions
+    to: assets/expressions
+  - from: assets/props
+    to: assets/props

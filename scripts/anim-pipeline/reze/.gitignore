@@ -1,0 +1,8 @@
+# 本地依赖与构建产物（不提交；根 .gitignore 也覆盖 node_modules/）
+node_modules/
+.dist/
+
+# 若误把转换产物写进本目录，也不入库（动作只放 tests/tmp/ 或 assets/model/optimized/，二者均 gitignore）
+*.vmd
+*.vpd
+*.fbx

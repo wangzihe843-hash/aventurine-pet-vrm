@@ -1,0 +1,1978 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "name": "Aventurine·Waveflair 官方动作包（3ds Max Biped / HSR 4.5 新角色）",
+    "attribution": "miHoYo / HoYoverse（官方模型与动画）；本机从 138 个 .max 场景经 3ds Max 导出 FBX 后使用",
+    "license": "official-game-asset (private, local-only)",
+    "redistribution": "forbidden-local-only",
+    "fbxNote": "砂金戏浪.zip 内 138 个 .max；逐文件导出只含 Biped 骨架+动画的 FBX。take 名约定 = 文件名去扩展名（如 StandBy.max → StandBy），空格/括号复本需先归一化再匹配（matchMode=exact）"
+  },
+  "fps": 30,
+  "sourceFps": null,
+  "matchMode": "file",
+  "notes": [
+    "全量 catalog registry：138 个 .max 中排除 Tpose + 2 个下载复本 = 135 条。",
+    "基础 25 条沿用 clips.adv.json 的 id/字段（pilot 与全量共享 id）；其余为启发式（slot=null 只进 catalog）。",
+    "真实 FBX 回传后需按 export_log.txt 的 fps 列复核 sourceFps；按 samples-report 复核 rest/单位。",
+    "Ready/transition/Hand 变体与社交 AS/BS 段均为 catalog-only，app 绑定在验收轮另行决定（docs/adv-clip-selection.md）。"
+  ],
+  "excluded": [
+    {
+      "take": "Skill04 (2)",
+      "reason": "与 Skill04 重复（下载复本）；同上。"
+    },
+    {
+      "take": "StandBy (2)",
+      "reason": "与 StandBy 重复（下载复本，修改时间不同）；真实 FBX 回传后比较曲线/时长二选一，禁止盲选。"
+    },
+    {
+      "take": "Tpose",
+      "reason": "绑定/rest 参考姿势，不是动作；采样器从 FBX bind/rest 读 rest，不进 clips。"
+    }
+  ],
+  "requirements": {
+    "idle": 5,
+    "walk": 2,
+    "social": 20,
+    "skill": 5,
+    "react": 5,
+    "locomotion": 10
+  },
+  "clips": [
+    {
+      "id": "akimbo01as",
+      "takeMatch": "Akimbo01AS",
+      "file": "Akimbo01AS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "akimbo01bs",
+      "takeMatch": "Akimbo01BS",
+      "file": "Akimbo01BS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "akimbo01handas",
+      "takeMatch": "Akimbo01HandAS",
+      "file": "Akimbo01HandAS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "akimbo01handbs",
+      "takeMatch": "Akimbo01HandBS",
+      "file": "Akimbo01HandBS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "akimbo01handloop",
+      "takeMatch": "Akimbo01HandLoop",
+      "file": "Akimbo01HandLoop.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "akimbo01loop",
+      "takeMatch": "Akimbo01Loop",
+      "file": "Akimbo01Loop.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "akimbo02as",
+      "takeMatch": "Akimbo02AS",
+      "file": "Akimbo02AS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "akimbo02bs",
+      "takeMatch": "Akimbo02BS",
+      "file": "Akimbo02BS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "akimbo02handas",
+      "takeMatch": "Akimbo02HandAS",
+      "file": "Akimbo02HandAS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "akimbo02handbs",
+      "takeMatch": "Akimbo02HandBS",
+      "file": "Akimbo02HandBS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "akimbo02handloop",
+      "takeMatch": "Akimbo02HandLoop",
+      "file": "Akimbo02HandLoop.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "akimbo02loop",
+      "takeMatch": "Akimbo02Loop",
+      "file": "Akimbo02Loop.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "alert01as",
+      "takeMatch": "Alert01AS",
+      "file": "Alert01AS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "alert01bs",
+      "takeMatch": "Alert01BS",
+      "file": "Alert01BS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "alert01loop",
+      "takeMatch": "Alert01Loop",
+      "file": "Alert01Loop.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "attackStandby",
+      "takeMatch": "AttackStandBy",
+      "file": "AttackStandBy.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": "idle",
+      "grounding": "feet",
+      "priority": 3,
+      "tags": [
+        "idle",
+        "combat"
+      ],
+      "note": "战斗待机 AttackStandBy（持武器/战斗警觉 idle 变体）"
+    },
+    {
+      "id": "backward01as",
+      "takeMatch": "BackWard01AS",
+      "file": "BackWard01AS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "backward01bs",
+      "takeMatch": "BackWard01BS",
+      "file": "BackWard01BS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "backward01loop",
+      "takeMatch": "BackWard01Loop",
+      "file": "BackWard01Loop.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "behit",
+      "takeMatch": "BeHit",
+      "file": "BeHit.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "react"
+      ],
+      "note": "受击/异常：catalog-only，grounding=none"
+    },
+    {
+      "id": "build02as",
+      "takeMatch": "Build02AS",
+      "file": "Build02AS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "build02bs",
+      "takeMatch": "Build02BS",
+      "file": "Build02BS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "build02loop",
+      "takeMatch": "Build02Loop",
+      "file": "Build02Loop.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "bye01",
+      "takeMatch": "Bye01",
+      "file": "Bye01.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "commonIdle",
+      "takeMatch": "Common_IdleShow",
+      "file": "Common_IdleShow.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": "idle",
+      "grounding": "feet",
+      "priority": 6,
+      "tags": [
+        "idle",
+        "show"
+      ],
+      "note": "通用站立展示 Common_IdleShow（可作 dshBusy 别名候选）"
+    },
+    {
+      "id": "covermouth01as",
+      "takeMatch": "CoverMouth01AS",
+      "file": "CoverMouth01AS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "covermouth01bs",
+      "takeMatch": "CoverMouth01BS",
+      "file": "CoverMouth01BS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "covermouth01loop",
+      "takeMatch": "CoverMouth01Loop",
+      "file": "CoverMouth01Loop.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "die",
+      "takeMatch": "Die",
+      "file": "Die.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "react",
+        "death"
+      ],
+      "note": "倒地（一次性 + hold 末帧；对应 HSR breaked 的 dshError 范式）"
+    },
+    {
+      "id": "die-loop",
+      "takeMatch": "Die_Loop",
+      "file": "Die_Loop.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "react"
+      ],
+      "note": "受击/异常：catalog-only，grounding=none"
+    },
+    {
+      "id": "fastrun",
+      "takeMatch": "FastRun",
+      "file": "FastRun.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "locomotion"
+      ],
+      "note": "移动：catalog-only 过渡/转向段"
+    },
+    {
+      "id": "fastrunstop-r",
+      "takeMatch": "FastRunStop_R",
+      "file": "FastRunStop_R.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "locomotion"
+      ],
+      "note": "移动：catalog-only 过渡/转向段"
+    },
+    {
+      "id": "fastrun-turnright-l",
+      "takeMatch": "FastRun_TurnRight_L",
+      "file": "FastRun_TurnRight_L.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "locomotion"
+      ],
+      "note": "移动：catalog-only 过渡/转向段"
+    },
+    {
+      "id": "forerake02as",
+      "takeMatch": "Forerake02AS",
+      "file": "Forerake02AS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "forerake02bs",
+      "takeMatch": "Forerake02BS",
+      "file": "Forerake02BS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "forerake02loop",
+      "takeMatch": "Forerake02Loop",
+      "file": "Forerake02Loop.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "hit-h",
+      "takeMatch": "Hit_H",
+      "file": "Hit_H.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "react"
+      ],
+      "note": "受击/异常：catalog-only，grounding=none"
+    },
+    {
+      "id": "hitL",
+      "takeMatch": "Hit_L",
+      "file": "Hit_L.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "react"
+      ],
+      "note": "左侧受击（一次性事件，poke 候选）"
+    },
+    {
+      "id": "hit-stun",
+      "takeMatch": "Hit_Stun",
+      "file": "Hit_Stun.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "react"
+      ],
+      "note": "受击/异常：catalog-only，grounding=none"
+    },
+    {
+      "id": "holdarm01as",
+      "takeMatch": "HoldArm01AS",
+      "file": "HoldArm01AS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "holdarm01bs",
+      "takeMatch": "HoldArm01BS",
+      "file": "HoldArm01BS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "holdarm01handas",
+      "takeMatch": "HoldArm01HandAS",
+      "file": "HoldArm01HandAS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "holdarm01handbs",
+      "takeMatch": "HoldArm01HandBS",
+      "file": "HoldArm01HandBS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "holdarm01handloop",
+      "takeMatch": "HoldArm01HandLoop",
+      "file": "HoldArm01HandLoop.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "holdarm01loop",
+      "takeMatch": "HoldArm01Loop",
+      "file": "HoldArm01Loop.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "holdhead01as",
+      "takeMatch": "HoldHead01AS",
+      "file": "HoldHead01AS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "holdhead01bs",
+      "takeMatch": "HoldHead01BS",
+      "file": "HoldHead01BS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "holdhead01loop",
+      "takeMatch": "HoldHead01Loop",
+      "file": "HoldHead01Loop.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "idleShow",
+      "takeMatch": "Idle_Show_01",
+      "file": "Idle_Show_01.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 8,
+      "tags": [
+        "idle",
+        "show"
+      ],
+      "note": "待机表演 1（Idle_Show_01，抬手看手套→张开仰头；HSR 旧版同名 take 的官方重制） ｜2026-11-09 全量复核：源 Biped 段 167 帧但根对象动画不闭合（idleShow 结束相对首帧转 65.48°/位移 0.372m，seam FAIL），源语义为一次性表演（站立动作），改 loop=false 且不进 app 槽位（catalog-only），避免 idle 轮换卡末帧/整段转身。"
+    },
+    {
+      "id": "idleShow2",
+      "takeMatch": "Idle_Show_02",
+      "file": "Idle_Show_02.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 4,
+      "tags": [
+        "idle",
+        "show"
+      ],
+      "note": "待机表演 2（Idle_Show_02） ｜2026-11-09 全量复核：源 Biped 段 167 帧但根对象动画不闭合（idleShow 结束相对首帧转 65.48°/位移 0.372m，seam FAIL），源语义为一次性表演（站立动作），改 loop=false 且不进 app 槽位（catalog-only），避免 idle 轮换卡末帧/整段转身。"
+    },
+    {
+      "id": "injured01as",
+      "takeMatch": "Injured01AS",
+      "file": "Injured01AS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "injured01bs",
+      "takeMatch": "Injured01BS",
+      "file": "Injured01BS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "injured01loop",
+      "takeMatch": "Injured01Loop",
+      "file": "Injured01Loop.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "lookatphoneas",
+      "takeMatch": "LookAtPhoneAS",
+      "file": "LookAtPhoneAS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "lookatphonebs",
+      "takeMatch": "LookAtPhoneBS",
+      "file": "LookAtPhoneBS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "lookAtPhone",
+      "takeMatch": "LookAtPhoneLoop",
+      "file": "LookAtPhoneLoop.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": "idle",
+      "grounding": "feet",
+      "priority": 2,
+      "tags": [
+        "idle",
+        "social"
+      ],
+      "note": "看手机循环（idle 稀有变体候选）"
+    },
+    {
+      "id": "mazeattack01",
+      "takeMatch": "MazeAttack01",
+      "file": "MazeAttack01.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "skill"
+      ],
+      "note": "技能/战斗表演：catalog-only（app 绑定待验收后定）"
+    },
+    {
+      "id": "mazeSkill",
+      "takeMatch": "MazeSkill01",
+      "file": "MazeSkill01.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "skill"
+      ],
+      "note": "秘技 MazeSkill01（一次性；HSR 旧版同 take） ｜源根对象动画为影视化 staging（位移/旋转含切镜跳变，见 pipeline samples-report rootMotion），采样时忽略对象级根运动（sourceRootMotion=ignore），保留骨架动作本身。",
+      "sourceRootMotion": "ignore"
+    },
+    {
+      "id": "puthand01as",
+      "takeMatch": "PutHand01AS",
+      "file": "PutHand01AS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "puthand01bs",
+      "takeMatch": "PutHand01BS",
+      "file": "PutHand01BS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "puthand01loop",
+      "takeMatch": "PutHand01Loop",
+      "file": "PutHand01Loop.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "revive",
+      "takeMatch": "Revive",
+      "file": "Revive.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "react"
+      ],
+      "note": "起身/复活（一次性 + hold；接 dshError 离开序列）"
+    },
+    {
+      "id": "run",
+      "takeMatch": "Run",
+      "file": "Run.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 4,
+      "tags": [
+        "walk",
+        "run"
+      ],
+      "note": "跑步循环（slot=walk + timeScale 可调；先按 1.0 接入，实机再校步速） ｜2026-11-09 全量复核：源 Biped 段对象根动画 yaw 不闭合（每循环 26°/位移 3.75m，retarget loopSeam 19.19° FAIL），不能作为循环动作；改 loop=false 且不进 app walk 池（catalog-only 一次性展示）。"
+    },
+    {
+      "id": "runstop-l",
+      "takeMatch": "RunStop_L",
+      "file": "RunStop_L.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "locomotion"
+      ],
+      "note": "移动：catalog-only 过渡/转向段"
+    },
+    {
+      "id": "runstop-r",
+      "takeMatch": "RunStop_R",
+      "file": "RunStop_R.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "locomotion"
+      ],
+      "note": "移动：catalog-only 过渡/转向段"
+    },
+    {
+      "id": "run-bs-l",
+      "takeMatch": "Run_BS_L",
+      "file": "Run_BS_L.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "locomotion"
+      ],
+      "note": "移动：catalog-only 过渡/转向段"
+    },
+    {
+      "id": "run-bs-r",
+      "takeMatch": "Run_BS_R",
+      "file": "Run_BS_R.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "locomotion"
+      ],
+      "note": "移动：catalog-only 过渡/转向段"
+    },
+    {
+      "id": "run-turnleft-l",
+      "takeMatch": "Run_TurnLeft_L",
+      "file": "Run_TurnLeft_L.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "locomotion"
+      ],
+      "note": "移动：catalog-only 过渡/转向段"
+    },
+    {
+      "id": "run-turnleft-r",
+      "takeMatch": "Run_TurnLeft_R",
+      "file": "Run_TurnLeft_R.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "locomotion"
+      ],
+      "note": "移动：catalog-only 过渡/转向段"
+    },
+    {
+      "id": "run-turnright-l",
+      "takeMatch": "Run_TurnRight_L",
+      "file": "Run_TurnRight_L.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "locomotion"
+      ],
+      "note": "移动：catalog-only 过渡/转向段"
+    },
+    {
+      "id": "run-turnright-r",
+      "takeMatch": "Run_TurnRight_R",
+      "file": "Run_TurnRight_R.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "locomotion"
+      ],
+      "note": "移动：catalog-only 过渡/转向段"
+    },
+    {
+      "id": "scratchhead01as",
+      "takeMatch": "ScratchHead01AS",
+      "file": "ScratchHead01AS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "scratchhead01bs",
+      "takeMatch": "ScratchHead01BS",
+      "file": "ScratchHead01BS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "scratchHead01",
+      "takeMatch": "ScratchHead01Loop",
+      "file": "ScratchHead01Loop.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": "idle",
+      "grounding": "feet",
+      "priority": 2,
+      "tags": [
+        "idle",
+        "social"
+      ],
+      "note": "挠头循环（idle 稀有变体候选）"
+    },
+    {
+      "id": "shrug01as",
+      "takeMatch": "Shrug01AS",
+      "file": "Shrug01AS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "shrug01bs",
+      "takeMatch": "Shrug01BS",
+      "file": "Shrug01BS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "shrug01",
+      "takeMatch": "Shrug01Loop",
+      "file": "Shrug01Loop.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": "idle",
+      "grounding": "feet",
+      "priority": 2,
+      "tags": [
+        "idle",
+        "social"
+      ],
+      "note": "耸肩循环（idle 稀有变体候选）"
+    },
+    {
+      "id": "skill01",
+      "takeMatch": "Skill01",
+      "file": "Skill01.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "skill"
+      ],
+      "note": "技能 1（一次性；staging 位移由 retarget in-place 逻辑归零）"
+    },
+    {
+      "id": "skill01readybs",
+      "takeMatch": "Skill01ReadyBS",
+      "file": "Skill01ReadyBS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "skill"
+      ],
+      "note": "技能/战斗表演：catalog-only（app 绑定待验收后定）"
+    },
+    {
+      "id": "skill01readyloop",
+      "takeMatch": "Skill01ReadyLoop",
+      "file": "Skill01ReadyLoop.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "skill"
+      ],
+      "note": "技能/战斗表演：catalog-only（app 绑定待验收后定）；技能 Ready 循环：语义待确认"
+    },
+    {
+      "id": "skill01-ready",
+      "takeMatch": "Skill01_Ready",
+      "file": "Skill01_Ready.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "skill"
+      ],
+      "note": "技能/战斗表演：catalog-only（app 绑定待验收后定）"
+    },
+    {
+      "id": "skill01-ready-loop",
+      "takeMatch": "Skill01_Ready_Loop",
+      "file": "Skill01_Ready_Loop.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "skill"
+      ],
+      "note": "技能/战斗表演：catalog-only（app 绑定待验收后定）；技能 Ready 循环：语义待确认"
+    },
+    {
+      "id": "skill01toskill02",
+      "takeMatch": "Skill01toSkill02",
+      "file": "Skill01toSkill02.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "skill"
+      ],
+      "note": "技能/战斗表演：catalog-only（app 绑定待验收后定）"
+    },
+    {
+      "id": "skill02",
+      "takeMatch": "Skill02",
+      "file": "Skill02.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "skill"
+      ],
+      "note": "技能 2（一次性） ｜源根对象动画为影视化 staging（位移/旋转含切镜跳变，见 pipeline samples-report rootMotion），采样时忽略对象级根运动（sourceRootMotion=ignore），保留骨架动作本身。",
+      "sourceRootMotion": "ignore"
+    },
+    {
+      "id": "skill02readyloop",
+      "takeMatch": "Skill02ReadyLoop",
+      "file": "Skill02ReadyLoop.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "skill"
+      ],
+      "note": "技能/战斗表演：catalog-only（app 绑定待验收后定）；技能 Ready 循环：语义待确认"
+    },
+    {
+      "id": "skill02-ready-loop",
+      "takeMatch": "Skill02_Ready_Loop",
+      "file": "Skill02_Ready_Loop.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "skill"
+      ],
+      "note": "技能/战斗表演：catalog-only（app 绑定待验收后定）；技能 Ready 循环：语义待确认"
+    },
+    {
+      "id": "skill02toskill01",
+      "takeMatch": "Skill02toSkill01",
+      "file": "Skill02toSkill01.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "skill"
+      ],
+      "note": "技能/战斗表演：catalog-only（app 绑定待验收后定）"
+    },
+    {
+      "id": "skill03",
+      "takeMatch": "Skill03",
+      "file": "Skill03.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "skill"
+      ],
+      "note": "技能 3 / 大招（一次性；长 staging 位移） ｜源根对象动画为影视化 staging（位移/旋转含切镜跳变，见 pipeline samples-report rootMotion），采样时忽略对象级根运动（sourceRootMotion=ignore），保留骨架动作本身。",
+      "sourceRootMotion": "ignore"
+    },
+    {
+      "id": "skill03-ready",
+      "takeMatch": "Skill03_Ready",
+      "file": "Skill03_Ready.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "skill"
+      ],
+      "note": "技能/战斗表演：catalog-only（app 绑定待验收后定）"
+    },
+    {
+      "id": "skill04",
+      "takeMatch": "Skill04",
+      "file": "Skill04.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "skill"
+      ],
+      "note": "技能 4（一次性）"
+    },
+    {
+      "id": "skill04-ready",
+      "takeMatch": "Skill04_Ready",
+      "file": "Skill04_Ready.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "skill"
+      ],
+      "note": "技能/战斗表演：catalog-only（app 绑定待验收后定）"
+    },
+    {
+      "id": "skill04-ready-loop",
+      "takeMatch": "Skill04_Ready_Loop",
+      "file": "Skill04_Ready_Loop.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "skill"
+      ],
+      "note": "技能/战斗表演：catalog-only（app 绑定待验收后定）；技能 Ready 循环：语义待确认"
+    },
+    {
+      "id": "skill41",
+      "takeMatch": "Skill41",
+      "file": "Skill41.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "skill"
+      ],
+      "note": "技能/战斗表演：catalog-only（app 绑定待验收后定） ｜源根对象动画为影视化 staging（位移/旋转含切镜跳变，见 pipeline samples-report rootMotion），采样时忽略对象级根运动（sourceRootMotion=ignore），保留骨架动作本身。",
+      "sourceRootMotion": "ignore"
+    },
+    {
+      "id": "snap01as",
+      "takeMatch": "Snap01AS",
+      "file": "Snap01AS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "snap01bs",
+      "takeMatch": "Snap01BS",
+      "file": "Snap01BS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "snap01loop",
+      "takeMatch": "Snap01Loop",
+      "file": "Snap01Loop.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "idle",
+      "takeMatch": "StandBy",
+      "file": "StandBy.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": "idle",
+      "grounding": "feet",
+      "priority": 10,
+      "tags": [
+        "idle"
+      ],
+      "note": "官方战斗待机 StandBy（主 idle；对应 HSR 旧版 Ani_StandBy）"
+    },
+    {
+      "id": "stun",
+      "takeMatch": "State_Stun",
+      "file": "State_Stun.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "react"
+      ],
+      "note": "眩晕进入/单段（一次性事件；对应 HSR stun）"
+    },
+    {
+      "id": "stunLoop",
+      "takeMatch": "State_Stun_Loop",
+      "file": "State_Stun_Loop.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "react"
+      ],
+      "note": "眩晕循环（保持状态用；事件层 enter/hold 或 hold=true）"
+    },
+    {
+      "id": "state-stun-recover",
+      "takeMatch": "State_Stun_Recover",
+      "file": "State_Stun_Recover.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "react"
+      ],
+      "note": "受击/异常：catalog-only，grounding=none"
+    },
+    {
+      "id": "strikechest01as",
+      "takeMatch": "StrikeChest01AS",
+      "file": "StrikeChest01AS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "strikechest01bs",
+      "takeMatch": "StrikeChest01BS",
+      "file": "StrikeChest01BS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "strikechest01loop",
+      "takeMatch": "StrikeChest01Loop",
+      "file": "StrikeChest01Loop.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "talk01",
+      "takeMatch": "Talk01",
+      "file": "Talk01.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "说话单段 1（一次性；事件/perform 播放，播完回 mood）"
+    },
+    {
+      "id": "talk02",
+      "takeMatch": "Talk02",
+      "file": "Talk02.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "说话单段 2"
+    },
+    {
+      "id": "idle2",
+      "takeMatch": "TeamStandBy",
+      "file": "TeamStandBy.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": "idle",
+      "grounding": "feet",
+      "priority": 5,
+      "tags": [
+        "idle"
+      ],
+      "note": "队伍待机 TeamStandBy（idle 变体）"
+    },
+    {
+      "id": "think01as",
+      "takeMatch": "Think01AS",
+      "file": "Think01AS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "think01bs",
+      "takeMatch": "Think01BS",
+      "file": "Think01BS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "think01handas",
+      "takeMatch": "Think01HandAS",
+      "file": "Think01HandAS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "think01handbs",
+      "takeMatch": "Think01HandBS",
+      "file": "Think01HandBS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "think01handloop",
+      "takeMatch": "Think01HandLoop",
+      "file": "Think01HandLoop.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "think01",
+      "takeMatch": "Think01Loop",
+      "file": "Think01Loop.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": "idle",
+      "grounding": "feet",
+      "priority": 2,
+      "tags": [
+        "idle",
+        "social"
+      ],
+      "note": "思考循环（idle 稀有变体候选）"
+    },
+    {
+      "id": "turn-180-l",
+      "takeMatch": "Turn_180_L",
+      "file": "Turn_180_L.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "locomotion"
+      ],
+      "note": "移动：catalog-only 过渡/转向段"
+    },
+    {
+      "id": "turn-180-r",
+      "takeMatch": "Turn_180_R",
+      "file": "Turn_180_R.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "locomotion"
+      ],
+      "note": "移动：catalog-only 过渡/转向段"
+    },
+    {
+      "id": "turn-45-l",
+      "takeMatch": "Turn_45_L",
+      "file": "Turn_45_L.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "locomotion"
+      ],
+      "note": "移动：catalog-only 过渡/转向段"
+    },
+    {
+      "id": "turn-45-r",
+      "takeMatch": "Turn_45_R",
+      "file": "Turn_45_R.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "locomotion"
+      ],
+      "note": "移动：catalog-only 过渡/转向段"
+    },
+    {
+      "id": "turn-90-l",
+      "takeMatch": "Turn_90_L",
+      "file": "Turn_90_L.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "locomotion"
+      ],
+      "note": "移动：catalog-only 过渡/转向段"
+    },
+    {
+      "id": "turn-90-r",
+      "takeMatch": "Turn_90_R",
+      "file": "Turn_90_R.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "locomotion"
+      ],
+      "note": "移动：catalog-only 过渡/转向段"
+    },
+    {
+      "id": "useheadphone01as",
+      "takeMatch": "UseHeadPhone01AS",
+      "file": "UseHeadPhone01AS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "useheadphone01bs",
+      "takeMatch": "UseHeadPhone01BS",
+      "file": "UseHeadPhone01BS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "useheadphone01loop",
+      "takeMatch": "UseHeadPhone01Loop",
+      "file": "UseHeadPhone01Loop.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "useprop01",
+      "takeMatch": "UseProp01",
+      "file": "UseProp01.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "useprop02",
+      "takeMatch": "UseProp02",
+      "file": "UseProp02.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "walk",
+      "takeMatch": "Walk",
+      "file": "Walk.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": "walk",
+      "grounding": "feet",
+      "priority": 10,
+      "tags": [
+        "walk"
+      ],
+      "note": "走路循环（Biped 原地/带 root motion 待实测；数据侧一律 in-place，水平位移归零）"
+    },
+    {
+      "id": "walkstop-l",
+      "takeMatch": "WalkStop_L",
+      "file": "WalkStop_L.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "locomotion"
+      ],
+      "note": "移动：catalog-only 过渡/转向段"
+    },
+    {
+      "id": "walkstop-r",
+      "takeMatch": "WalkStop_R",
+      "file": "WalkStop_R.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "locomotion"
+      ],
+      "note": "移动：catalog-only 过渡/转向段"
+    },
+    {
+      "id": "watchphone01as",
+      "takeMatch": "WatchPhone01AS",
+      "file": "WatchPhone01AS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "watchphone01bs",
+      "takeMatch": "WatchPhone01BS",
+      "file": "WatchPhone01BS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "watchphone01loop",
+      "takeMatch": "WatchPhone01Loop",
+      "file": "WatchPhone01Loop.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "worry01as",
+      "takeMatch": "Worry01AS",
+      "file": "Worry01AS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "worry01bs",
+      "takeMatch": "Worry01BS",
+      "file": "Worry01BS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "worry01",
+      "takeMatch": "Worry01Loop",
+      "file": "Worry01Loop.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": "idle",
+      "grounding": "feet",
+      "priority": 2,
+      "tags": [
+        "idle",
+        "social"
+      ],
+      "note": "担忧循环（idle 稀有变体候选）"
+    },
+    {
+      "id": "worry02as",
+      "takeMatch": "Worry02AS",
+      "file": "Worry02AS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "worry02bs",
+      "takeMatch": "Worry02BS",
+      "file": "Worry02BS.fbx",
+      "fps": 30,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "worry02loop",
+      "takeMatch": "Worry02Loop",
+      "file": "Worry02Loop.fbx",
+      "fps": 30,
+      "loop": true,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "social"
+      ],
+      "note": "NPC 社交：catalog-only；AS/BS/Loop 语义待真实数据验证"
+    },
+    {
+      "id": "standby2",
+      "takeMatch": "StandBy (2)",
+      "file": "StandBy (2).fbx",
+      "fps": 60,
+      "loop": false,
+      "slot": null,
+      "grounding": "feet",
+      "priority": 0,
+      "tags": [
+        "idle",
+        "variant"
+      ],
+      "note": "战斗待机变体（60fps，源 0..120f=2.0s；与 StandBy 30fps/2.78s 时长不同，不是简单重复；catalog-only 待人工确认语义）"
+    },
+    {
+      "id": "skill04-2",
+      "takeMatch": "Skill04 (2)",
+      "file": "Skill04 (2).fbx",
+      "fps": 60,
+      "loop": false,
+      "slot": null,
+      "grounding": "none",
+      "priority": 0,
+      "tags": [
+        "skill"
+      ],
+      "note": "技能 4 变体（60fps，源 0..240f=4.0s；与 Skill04 30fps/5.57s 时长不同；catalog-only；文件名含空格/括号，导出侧已验证保留原样） ｜源根对象动画为影视化 staging（位移/旋转含切镜跳变，见 pipeline samples-report rootMotion），采样时忽略对象级根运动（sourceRootMotion=ignore），保留骨架动作本身。",
+      "sourceRootMotion": "ignore"
+    }
+  ]
+}

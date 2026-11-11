@@ -1,0 +1,74 @@
+/*
+ * Wave 1 A2：透明 overlay 承载 three.js canvas。
+ * - 整个窗口必须透明（overlay 窗没有背景），canvas 由 renderer 创建并绝对定位铺满；
+ * - 不参与系统拖拽/选中，pointer-events 全关（Wave 1 整体鼠标穿透，A1 之后按命中区域切换）；
+ * - 样式只负责容器，模型尺寸/位置由 src/model/layout.ts 计算、src/scene/pet-scene.ts 消费。
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-app-region: no-drag;
+  user-select: none;
+}
+
+html,
+body,
+#app {
+  background: transparent;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: default;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    'SF Pro Text',
+    'Helvetica Neue',
+    sans-serif;
+}
+
+/* 透明渲染容器：canvas 由 main.ts 创建并以绝对定位铺满（见 scene/pet-scene.ts） */
+#app {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* canvas 宽高由 PetScene.setViewport 同步（backing store 含 DPR），CSS 尺寸保持 100% */
+#pet-canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* ------------------------- Wave 2：台词气泡（Lead 集成层） ------------------------- */
+/* 由 core/bubble.ts 创建；pointer-events:none 保证不额外拦截鼠标（穿透/命中仍由 pointer-gate 决定）。 */
+.pet-bubble {
+  padding: 6px 10px;
+  border-radius: 10px;
+  font-size: 13px;
+  line-height: 1.35;
+  color: #1d1a16;
+  background: rgba(255, 250, 240, 0.92);
+  border: 1px solid rgba(120, 96, 56, 0.35);
+  box-shadow: 0 2px 10px rgba(30, 24, 14, 0.18);
+  transition: opacity 160ms ease;
+  white-space: pre-wrap;
+  word-break: break-word;
+  text-align: center;
+  top: 0;
+  left: 0;
+}

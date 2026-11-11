@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "defaultAvatarId": "aventurine-waveflair",
+  "avatars": [
+    {
+      "id": "canary-outfit",
+      "file": "vrm/canary/砂金石心十人公司制服(0.x).vrm",
+      "specVersion": "0.x",
+      "heightMeters": 1.76,
+      "expressions": {
+        "blink": "blink",
+        "blinkLeft": "blinkLeft",
+        "blinkRight": "blinkRight",
+        "happy": "happy",
+        "angry": "angry",
+        "surprised": "surprised",
+        "neutral": "neutral"
+      },
+      "lookAt": {
+        "mode": "vrm",
+        "maxYawDeg": 35,
+        "maxPitchDeg": 20
+      },
+      "springChains": 0,
+      "yawOffsetDeg": 0,
+      "notes": "W0 canary（VRM 0.x，51 humanoid 骨、31 材质/13 贴图）；来源用户下载/模之屋，仅本机验证，禁止再分发。W0-4 实测：rotateVRM0 后面向 +Z（正确）、有 VRM0 lookAt（firstPerson.lookAtTypeName=Bone，three-vrm 归一化为 VRM lookAt）、无 springBone；表情 preset 经 three-vrm v0compat 归一化（joy→happy、blink_l/R→blinkLeft/Right、a/i/u/e/o→aa/ih/ou/ee/oh，实测成立）。"
+    },
+    {
+      "id": "aventurine-waveflair",
+      "file": "vrm/aventurine-tpose.vrm",
+      "specVersion": "1.0",
+      "heightMeters": 1.73,
+      "expressions": {
+        "blink": "blink",
+        "blinkLeft": "blinkLeft",
+        "blinkRight": "blinkRight",
+        "happy": "happy",
+        "angry": "angry",
+        "sad": "sad",
+        "relaxed": "relaxed",
+        "surprised": "surprised"
+      },
+      "lookAt": {
+        "mode": "procedural",
+        "maxYawDeg": 35,
+        "maxPitchDeg": 20
+      },
+      "springChains": 50,
+      "yawOffsetDeg": 0,
+      "notes": "W1.5-Tpose 重制版：PMX 源经 VRMify 转 VRM 1.0（默认把 A-pose 手臂抬为规范 T-pose：手臂水平/掌心向下/四指伸直/拇指 45°；足D 等付与骨合并进所跟随骨+权重；含 SpringBone 50 链/175 collider、95 表情）。原 aventurine-waveflair*.vrm 只读保留回滚。U-lane clip 数据按本模型 VRM1 朝向（面向 +Z、左手 +X）用 convert-clips --axis x 烘焙；VRM0/面向 -Z 的旧模型（如 canary、Zome）需要 axis z 数据或播放期换算。版权 miHoYo，禁止二次配布/商用。 表情层补充（V6）：目标模型 17 preset 含 sad/relaxed（已加绑定）；无 neutral preset → 业务 neutral 走 expression 全清 0（不设无效绑定）。"
+    }
+  ]
+}

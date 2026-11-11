@@ -1,0 +1,221 @@
+/**
+ * Batch FBX→VMD converter (node-side, no browser, no GPU).
+ *
+ * Usage:  npx esbuild scripts/fbx2vmd.ts --bundle --platform=node --format=esm \
+ *           --outfile=<tmp>/fbx2vmd.mjs && node <tmp>/fbx2vmd.mjs <files-or-dirs...> \
+ *           [--out <dir>] [--in-place] [--bind-ref <idle.fbx>]
+ *
+ * Directories are scanned recursively for .fbx; each clip writes <out>/<basename>.vmd
+ * (filename preserved, output flattened). Target positions come from
+ * public/mmd-skeleton.json (same dump the validate harness uses). The bind
+ * reference defaults to an Idle.fbx found among the inputs — Unity/UE per-pose
+ * exports embed a mid-cycle stride as their rest pose, so anchoring them to the
+ * idle keeps "delta from rest" honest; Mixamo-shaped clips ignore it.
+ *
+ * A motion's blend-shape animation rides in its VMD as morphs, named for the
+ * target model when --target-pmx gives one (see MORPH_MAP), with each eye
+ * showing as much as the source's (see fitEyelids).
+ *
+ * A camera FBX (an animated camera, no skeleton) writes a camera VMD. The figure
+ * it films — `X.character.fbx`, among the inputs or beside `X.camera.fbx` —
+ * gives the scene its unit (see sceneScale) and the shot its subject.
+ */
+import { existsSync, readFileSync, writeFileSync, readdirSync, statSync, mkdirSync } from "node:fs"
+import { basename, join } from "node:path"
+
+import { parseFbxToAnimationClips } from "../lib/fbx"
+import { cameraToMmd, readCameraFbx, sceneScale } from "../lib/fbx-camera"
+import { readMorphTracks, readSourceEyelids, readTargetEyelids, toMmdMorphTracks, type Eyelids } from "../lib/fbx-morph"
+import { buildBindReferenceFromClip, createSourcePreview, measureFigureHeight, measureTargetPositions, retargetClips } from "../lib/retarget"
+import { toEngineClip } from "../lib/engine-clip"
+import { VMDWriter, PmxLoader, readPmxDocument } from "reze-engine"
+
+interface MmdSkeletonDump {
+  bones: { name: string; worldPosition: number[] }[]
+}
+
+/** Bind-pose world positions measured from the actual target PMX — the SAME
+ *  path the site uses: load the model, settle a rest frame, and read
+ *  getBoneWorldPosition through measureTargetPositions. A hand-rolled
+ *  bind-translation accumulation drifted from the runtime skeleton and left
+ *  constant per-bone alignment offsets (visible at the ankles: feet swaying
+ *  with the body instead of planted). One code path, one truth. */
+function measurePmxTarget(pmxPath: string): {
+  positions: Record<string, [number, number, number]>
+  morphs: Set<string>
+  eyelids: Eyelids | null
+} {
+  const buf = toArrayBuffer(readFileSync(pmxPath))
+  const model = PmxLoader.loadFromBuffer(buf)
+  model.update(1 / 60) // settled rest frame, exactly like the site before measuring
+  return {
+    positions: measureTargetPositions((n) => model.getBoneWorldPosition(n)),
+    morphs: new Set(model.getMorphing().morphs.map((m) => m.name)),
+    eyelids: readTargetEyelids(readPmxDocument(buf)),
+  }
+}
+
+function collectFbx(path: string, out: string[]): void {
+  const st = statSync(path)
+  if (st.isDirectory()) {
+    for (const entry of readdirSync(path)) collectFbx(join(path, entry), out)
+  } else if (/\.fbx$/i.test(path)) {
+    out.push(path)
+  }
+}
+
+function toArrayBuffer(buf: Buffer): ArrayBuffer {
+  return buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength) as ArrayBuffer
+}
+
+function main(): void {
+  const args = process.argv.slice(2)
+  const inputs: string[] = []
+  let outDir: string | null = null
+  let inPlace = false
+  let footIK = true // matches the site; --no-foot-ik opts out
+  let bindRefPath: string | null = null
+  let noBindRef = false
+  let targetPmxPath: string | null = null
+  for (let i = 0; i < args.length; i++) {
+    if (args[i] === "--out") outDir = args[++i]
+    else if (args[i] === "--in-place") inPlace = true
+    else if (args[i] === "--no-bind-ref") noBindRef = true
+    else if (args[i] === "--foot-ik") footIK = true
+    else if (args[i] === "--no-foot-ik") footIK = false
+    else if (args[i] === "--bind-ref") bindRefPath = args[++i]
+    else if (args[i] === "--target-pmx") targetPmxPath = args[++i]
+    else inputs.push(args[i])
+  }
+  if (inputs.length === 0) {
+    console.error(
+      "usage: fbx2vmd <files-or-dirs...> [--out <dir>] [--target-pmx <model.pmx>] [--in-place] [--no-foot-ik] [--bind-ref <idle.fbx>]"
+    )
+    process.exit(1)
+  }
+
+  const files: string[] = []
+  for (const input of inputs) collectFbx(input, files)
+  files.sort()
+  if (files.length === 0) {
+    console.error("no .fbx files found")
+    process.exit(1)
+  }
+
+  let targetPositions: Record<string, [number, number, number]>
+  let targetMorphs: Set<string> | undefined
+  let targetEyelids: Eyelids | null = null
+  if (targetPmxPath) {
+    const target = measurePmxTarget(targetPmxPath)
+    targetPositions = target.positions
+    targetMorphs = target.morphs
+    targetEyelids = target.eyelids
+    console.log(`target skeleton: measured from ${targetPmxPath}`)
+  } else {
+    // Legacy fallback; prefer --target-pmx so alignment respects the actual model.
+    const mmdSkel = JSON.parse(readFileSync(join(process.cwd(), "public", "mmd-skeleton.json"), "utf8")) as MmdSkeletonDump
+    targetPositions = {}
+    for (const b of mmdSkel.bones) {
+      targetPositions[b.name] = [b.worldPosition[0], b.worldPosition[1], b.worldPosition[2]]
+    }
+    console.log("target skeleton: public/mmd-skeleton.json (pass --target-pmx to measure the real model)")
+  }
+
+  const refFile = bindRefPath ?? files.find((f) => basename(f).toLowerCase() === "idle.fbx") ?? null
+  // Default bind reference = the site's bundled Idle.fbx, exactly like the
+  // app: Unity per-pose exports stash the first animation frame as the rest
+  // pose, and retargeting against that baseline bakes constant per-bone
+  // offsets into every output. --bind-ref overrides; --no-bind-ref opts out.
+  let bindReference: ReturnType<typeof buildBindReferenceFromClip> | null = null
+  const effectiveRef = refFile ?? (noBindRef ? null : join(import.meta.dirname, "../public/fbx/Idle.fbx"))
+  if (effectiveRef) {
+    const refClips = parseFbxToAnimationClips(toArrayBuffer(readFileSync(effectiveRef)))
+    if (refClips[0]) {
+      bindReference = buildBindReferenceFromClip(refClips[0])
+      console.log(`bind reference: ${effectiveRef}`)
+    }
+  }
+
+  if (outDir) mkdirSync(outDir, { recursive: true })
+  const writer = new VMDWriter()
+
+  // The figure a camera films, by name: X.camera.fbx ↔ X.character.fbx.
+  // Her height, and where she is at time t: midway between hips and head, in
+  // her file's units, left-handed like the shot.
+  type Figure = { height: number | null; at: ((t: number) => [number, number, number]) | null; from: string | null }
+  const figureOf = (cameraFile: string): Figure => {
+    const none: Figure = { height: null, at: null, from: null }
+    if (!/\.camera\.fbx$/i.test(cameraFile)) return none
+    const sibling = cameraFile.replace(/\.camera\.fbx$/i, ".character.fbx")
+    const from =
+      files.find((f) => basename(f).toLowerCase() === basename(sibling).toLowerCase()) ??
+      (existsSync(sibling) ? sibling : null)
+    if (!from) return none
+    const [clip] = parseFbxToAnimationClips(toArrayBuffer(readFileSync(from)))
+    if (!clip) return { ...none, from }
+    const preview = createSourcePreview(clip)
+    const hips = preview.bones.findIndex((b) => b.name === "Hips")
+    const head = preview.bones.findIndex((b) => b.name === "Head")
+    const at =
+      hips >= 0 && head >= 0
+        ? (t: number): [number, number, number] => {
+            const p = preview.positionsAt(t)
+            return [(p[hips][0] + p[head][0]) / 2, (p[hips][1] + p[head][1]) / 2, (p[hips][2] + p[head][2]) / 2]
+          }
+        : null
+    return { height: measureFigureHeight(clip), at, from }
+  }
+
+  let ok = 0
+  for (const file of files) {
+    const name = basename(file).replace(/\.fbx$/i, "")
+    try {
+      const buffer = toArrayBuffer(readFileSync(file))
+      const camera = readCameraFbx(buffer)
+      if (camera) {
+        const figure = figureOf(file)
+        const scale = sceneScale(figure.height)
+        const at = figure.at
+        const subject = at ? (t: number) => at(t).map((v) => v * scale) as [number, number, number] : undefined
+        const vmd = writer.writeCamera(cameraToMmd(camera, scale, subject))
+        writeFileSync(join(outDir ?? join(file, ".."), `${name}.vmd`), Buffer.from(vmd))
+        console.log(
+          `${name}.vmd  (camera, ${camera.frames.length} keys, ×${scale.toFixed(3)} — ` +
+          (figure.from && figure.height
+            ? `${basename(figure.from)} stands ${figure.height.toFixed(3)} units`
+            : "no figure, scene taken as metres") +
+          `, ${(vmd.byteLength / 1024).toFixed(0)} KB)`
+        )
+        ok++
+        continue
+      }
+      const clips = parseFbxToAnimationClips(buffer)
+      if (clips.length === 0) throw new Error("no animation clips")
+      if (clips.length > 1) console.warn(`${name}: ${clips.length} clips, converting the first`)
+      const [mmd] = retargetClips([clips[0]], { targetPositions, bindReference, inPlace, footIK })
+      const morphSource = readMorphTracks(buffer)
+      const sourceEyelids = morphSource.length && targetEyelids ? readSourceEyelids(buffer) : null
+      const lids = sourceEyelids && targetEyelids ? { source: sourceEyelids, target: targetEyelids } : undefined
+      const { morphTracks, unmapped } = toMmdMorphTracks(morphSource, targetMorphs, lids)
+      const vmd = writer.write(toEngineClip(mmd, 30, morphTracks))
+      const outPath = join(outDir ?? join(file, ".."), `${name}.vmd`)
+      writeFileSync(outPath, Buffer.from(vmd))
+      console.log(
+        `${name}.vmd  (${(vmd.byteLength / 1024).toFixed(0)} KB` +
+        (morphSource.length
+          ? `, ${morphTracks.size} morphs from ${morphSource.length - unmapped.length}/${morphSource.length} channels` +
+            (lids ? `, eyes fitted ×${(lids.source.size / lids.target.size).toFixed(2)}` : "") +
+            (unmapped.length ? `, unmapped: ${unmapped.join(" ")}` : "")
+          : "") +
+        ")"
+      )
+      ok++
+    } catch (e) {
+      console.error(`FAILED ${name}: ${e instanceof Error ? e.message : String(e)}`)
+    }
+  }
+  console.log(`${ok}/${files.length} converted`)
+  process.exit(ok === files.length ? 0 : 1)
+}
+
+main()

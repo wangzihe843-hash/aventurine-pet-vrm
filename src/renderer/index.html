@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>aventurine-pet</title>
+    <!--
+      Wave 1 基线 CSP（PLAN §17.5-9 / §8.1，A2 只消费不放宽）：
+      - img-src / connect-src 放开 `pet-asset:`：A2 的 PMX（fetch/XHR）与贴图（Image/WebGL）走自定义协议；
+      - V1：connect-src 增加 `blob:` —— GLTFLoader 的 ImageBitmapLoader 用 fetch(blobURL) 解码 VRM
+        内嵌贴图；不放行会让所有 MToon 贴图加载失败（模型渲染成白色剪影，2026-11-09 实机定位）；
+      - script-src 保持 'self'（不得放宽）；`ws:` 仅为 dev HMR 放开，C4 生产构建需收紧；
+      - 不加载 pet-asset 下的脚本/样式/worker，因此其它指令不变。
+    -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: pet-asset:; connect-src 'self' ws: blob: pet-asset:"
+    />
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <!-- 透明 overlay 根容器：three.js canvas 由 src/main.ts 挂载（不保留 W0 占位 DOM）。 -->
+    <div id="app"></div>
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>

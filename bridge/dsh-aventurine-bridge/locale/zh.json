@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "砂金·戏浪桥",
+    "description": "把 DSH 的 agent 状态与任务事件写入 ~/.dsh/aventurine-pet，供「砂金·戏浪」桌面宠物读取。"
+  }
+}

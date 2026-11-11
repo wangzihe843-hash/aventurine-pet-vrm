@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "source": { "name": "test-fixture" },
+  "clips": [
+    {
+      "id": "faceTest",
+      "file": "FACE_TEST.anim",
+      "fps": 30,
+      "loop": true,
+      "priority": 0,
+      "triggers": ["idle"],
+      "tags": ["test", "loop"],
+      "scale": 1,
+      "note": "fixture：1s loop，Joy/Blink/Neutral"
+    },
+    {
+      "id": "petTest",
+      "file": "PET_TEST.anim",
+      "fps": 30,
+      "loop": false,
+      "priority": 2,
+      "triggers": ["pat"],
+      "tags": ["test"],
+      "scale": 1,
+      "note": "fixture：1s 非 loop，A/Angry/O（O 源值 1.4 → clamp 1）"
+    }
+  ]
+}

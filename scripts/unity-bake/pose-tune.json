@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "notes": "初始姿态微调（v1）：只改 introStart 的起始站立段（第 0–8 帧，约 0.27s），让「宠物第一次出现」的站姿不是略外张的 A-pose 感。做法是把两条上臂轻微内收（绕模型 +Z，左 -5°/右 +5°）并略向前（绕 +X -5°），第 8 帧线性淡出到 0，不影响后面的下蹲/躺下动作。模型轴向约定：VRM 1.0，面向 +Z、左手 +X。详细说明见 docs/wave15-report.md 与 scripts/unity-bake/README.md。",
+  "rules": [
+    {
+      "clip": "introStart",
+      "frames": [0, 8],
+      "bones": {
+        "LeftUpperArm": [
+          { "axis": [0, 0, 1], "deg": -5 },
+          { "axis": [1, 0, 0], "deg": -5 }
+        ],
+        "RightUpperArm": [
+          { "axis": [0, 0, 1], "deg": 5 },
+          { "axis": [1, 0, 0], "deg": -5 }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="data:," />
+    <title>W0-4 canary viewer — three-vrm</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: transparent;
+      }
+      #stage {
+        position: relative;
+        width: 720px;
+        height: 960px;
+      }
+      #viewer {
+        display: block;
+        width: 720px;
+        height: 960px;
+        background: transparent;
+      }
+      #hud {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        max-width: 700px;
+        padding: 6px 8px;
+        border-radius: 4px;
+        background: rgba(0, 0, 0, 0.55);
+        color: #d8e6ff;
+        font: 11px/1.45 ui-monospace, SFMono-Regular, Menlo, monospace;
+        white-space: pre;
+        pointer-events: none;
+        z-index: 10;
+      }
+      #status {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        background: rgba(10, 14, 22, 0.85);
+        font: 16px/1.4 ui-monospace, monospace;
+        z-index: 20;
+      }
+    </style>
+    <!--
+      The three-vrm ESM bundle only imports bare "three"; the rest of its code is
+      self-contained. This import map makes it loadable from a plain static HTTP
+      server (file:// would be blocked by fetch/CORS).
+    -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "/node_modules/three/build/three.module.js",
+          "three/addons/": "/node_modules/three/examples/jsm/",
+          "@pixiv/three-vrm": "/node_modules/@pixiv/three-vrm/lib/three-vrm.module.js",
+          "@pixiv/three-vrm-animation": "/node_modules/@pixiv/three-vrm-animation/lib/three-vrm-animation.module.js"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="stage">
+      <canvas id="viewer" width="720" height="960"></canvas>
+      <div id="hud">AVENTURINE W0-4 VRM VIEWER</div>
+      <div id="status">loading…</div>
+    </div>
+    <script type="module" src="./canary-viewer.js"></script>
+  </body>
+</html>

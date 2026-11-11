@@ -1,0 +1,240 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "name": "Honkai: Star Rail — Avatar_Aventurine_00（官方模型 FBX 的 Emo_* 表情 take）",
+    "attribution": "miHoYo / HoYoverse（官方模型与动画）；用户本机从游戏资源包导出，仅本机私有使用",
+    "license": "official-game-asset (private, local-only)",
+    "redistribution": "forbidden-local-only",
+    "note": "17 条 Emo_ take 是脸骨动画（73 根脸骨）；本管线解码成 VRM 1.0 preset 权重。源 60fps，采样 30fps。"
+  },
+  "sampling": {
+    "sourceFps": 60,
+    "fps": 30,
+    "neutralTake": "emo_default",
+    "takes": [
+      { "id": "emo_battle_hit", "pattern": "Ani_Battle_Hit" },
+      { "id": "emo_battle_stun", "pattern": "Ani_Battle_Stun" },
+      { "id": "emo_blink", "pattern": "Ani_Blink" },
+      { "id": "emo_close_eye", "pattern": "Ani_CloseEye" },
+      { "id": "emo_default", "pattern": "Ani_Default" },
+      { "id": "emo_idleshow", "pattern": "Ani_Idleshow" },
+      { "id": "emo_photograph_angry", "pattern": "PhotoGraph_Angry" },
+      { "id": "emo_photograph_gentle", "pattern": "PhotoGraph_Gentl" },
+      { "id": "emo_photograph_shy", "pattern": "PhotoGraph_Shy" },
+      { "id": "emo_photograph_surprise", "pattern": "PhotoGraph_Surpr" },
+      { "id": "emo_photograph_trouble", "pattern": "PhotoGraph_Troub" },
+      { "id": "emo_close01_eye", "pattern": "Close01_Eye" },
+      { "id": "emo_close02_eye", "pattern": "Close02_Eye" },
+      { "id": "emo_close03_eye", "pattern": "Close03_Eye" },
+      { "id": "emo_default_brow", "pattern": "Default_Brow" },
+      { "id": "emo_default_eye", "pattern": "Default_Eye" },
+      { "id": "emo_default_mouth", "pattern": "Default_Mouth" }
+    ]
+  },
+  "layers": {
+    "brow": [
+      "brow_Inn_L", "brow_Inn_R", "brow_M", "brow_Mid_L", "brow_Mid_R", "brow_Out_L",
+      "brow_Out_R", "eyebrow_Inn_L", "eyebrow_Inn_R", "eyebrow_Mid_L", "eyebrow_Mid_R",
+      "eyebrow_Out_L", "eyebrow_Out_R"
+    ],
+    "eye": [
+      "eyeconner_inn_L", "eyeconner_inn_R", "eyeconner_out_L", "eyeconner_out_R",
+      "eyedn_inn_L", "eyedn_inn_R", "eyedn_M_L", "eyedn_M_R", "eyedn_out_L", "eyedn_out_R",
+      "eyeup_inn_L", "eyeup_inn_R", "eyeup_M_L", "eyeup_M_R", "eyeup_out_L", "eyeup_out_R",
+      "nosemid_M", "socketUpper_L", "socketUpper_R"
+    ],
+    "mouth": [
+      "DownTeeth", "UpTeeth", "JawdnEnd_M", "JawupeerEnd_M", "chhek_L", "chhek_R",
+      "lipConner_L", "lipConner_R", "lipLower_00_L", "lipLower_00_R", "lipLower_01_L",
+      "lipLower_01_R", "lipLower_M", "lipUpper_00_L", "lipUpper_00_R", "lipUpper_01_L",
+      "lipUpper_01_R", "lipUpper_M", "mouthLower_M", "mouthUpper_01_L", "mouthUpper_01_R",
+      "mouthUpper_02_L", "mouthUpper_02_R", "mouthUpper_03_L", "mouthUpper_03_R",
+      "nosetip_M", "tongue_01", "tongue_02", "tongue_03", "tongue_04"
+    ],
+    "gaze": [
+      "eye_All_L", "eye_All_R", "eye_L", "eye_R", "eyeEnd_L", "eyeEnd_R",
+      "eyeEnd_01_L", "eyeEnd_01_R", "orbit_L", "orbit_R"
+    ]
+  },
+  "calibration": [
+    { "channel": "brow_angry", "take": "emo_photograph_angry", "frame": 0, "layer": "brow" },
+    { "channel": "brow_surprise", "take": "emo_photograph_surprise", "frame": 0, "layer": "brow" },
+    { "channel": "brow_gentle", "take": "emo_photograph_gentle", "frame": 0, "layer": "brow" },
+    { "channel": "brow_shy", "take": "emo_photograph_shy", "frame": 0, "layer": "brow" },
+    { "channel": "brow_trouble", "take": "emo_photograph_trouble", "frame": 0, "layer": "brow" },
+    { "channel": "eye_close01", "take": "emo_close01_eye", "frame": 0, "layer": "eye" },
+    { "channel": "eye_close02", "take": "emo_close02_eye", "frame": 0, "layer": "eye" },
+    { "channel": "eye_close03", "take": "emo_close03_eye", "frame": 0, "layer": "eye" },
+    { "channel": "eye_angry", "take": "emo_photograph_angry", "frame": 0, "layer": "eye" },
+    { "channel": "eye_surprise", "take": "emo_photograph_surprise", "frame": 0, "layer": "eye" },
+    { "channel": "eye_gentle", "take": "emo_photograph_gentle", "frame": 0, "layer": "eye" },
+    { "channel": "eye_shy", "take": "emo_photograph_shy", "frame": 0, "layer": "eye" },
+    { "channel": "eye_trouble", "take": "emo_photograph_trouble", "frame": 0, "layer": "eye" },
+    { "channel": "eye_battle", "take": "emo_battle_stun", "frame": 0, "layer": "eye" },
+    { "channel": "mouth_angry", "take": "emo_photograph_angry", "frame": 0, "layer": "mouth" },
+    { "channel": "mouth_surprise", "take": "emo_photograph_surprise", "frame": 0, "layer": "mouth" },
+    { "channel": "mouth_gentle", "take": "emo_photograph_gentle", "frame": 0, "layer": "mouth" },
+    { "channel": "mouth_shy", "take": "emo_photograph_shy", "frame": 0, "layer": "mouth" },
+    { "channel": "mouth_trouble", "take": "emo_photograph_trouble", "frame": 0, "layer": "mouth" },
+    { "channel": "mouth_battle", "take": "emo_battle_stun", "frame": 0, "layer": "mouth" }
+  ],
+  "decomposition": {
+    "maxBases": 3,
+    "residualTolerance": 0.03,
+    "correlationFloor": 0.02
+  },
+  "derived": {
+    "eye_smile": { "op": "max", "inputs": ["eye_close02", "eye_close03"] },
+    "eye_smile_wide": { "op": "max", "inputs": ["eye_close02", "eye_close03", "eye_shy"] },
+    "eye_closed": { "op": "max", "inputs": ["eye_close01", "eye_battle"] }
+  },
+  "presetRules": {
+    "angry": [
+      ["brow_angry", 0.5],
+      ["eye_angry", 0.3],
+      ["mouth_angry", 0.12],
+      ["mouth_battle", 0.08],
+      ["brow_trouble", 0.12],
+      ["mouth_trouble", 0.08]
+    ],
+    "surprised": [
+      ["brow_surprise", 0.45],
+      ["eye_surprise", 0.35],
+      ["mouth_surprise", 0.2]
+    ],
+    "relaxed": [
+      ["brow_gentle", 0.45],
+      ["eye_gentle", 0.35],
+      ["mouth_gentle", 0.2]
+    ],
+    "sad": [
+      ["brow_shy", 0.5],
+      ["mouth_shy", 0.3],
+      ["eye_shy", 0.2]
+    ],
+    "happy": [["eye_smile", 1.0]]
+  },
+  "presetGates": {
+    "happy": ["brow_angry", "brow_trouble", "mouth_angry", "mouth_battle"],
+    "surprised": ["brow_angry", "brow_trouble"],
+    "relaxed": ["brow_angry", "brow_trouble", "mouth_angry"]
+  },
+  "clips": [
+    {
+      "id": "photoAngry",
+      "take": "emo_photograph_angry",
+      "loop": true,
+      "fadeInSec": 0.2,
+      "fadeOutSec": 0.2,
+      "priority": 6,
+      "triggers": ["angry"],
+      "tags": ["emotion", "pose", "photo"],
+      "note": "HSR PhotoGraph_Angry 静态表情：眉压低（brow_angry）+ 眼锐利（eye_angry）+ 嘴角下压 → angry≈0.92；常值保持，0.2s 淡入淡出。"
+    },
+    {
+      "id": "photoGentle",
+      "take": "emo_photograph_gentle",
+      "loop": true,
+      "fadeInSec": 0.2,
+      "fadeOutSec": 0.2,
+      "priority": 5,
+      "presetCaps": { "relaxed": 0.8 },
+      "triggers": ["gentle"],
+      "tags": ["emotion", "pose", "photo"],
+      "note": "HSR PhotoGraph_Gentle「温柔」：眉尾柔化 + 眼弯 + 嘴微上扬 → relaxed；HSR 嘴角幅度很小，目标 relaxed（慈愛）偏强 → 上限 0.8。"
+    },
+    {
+      "id": "photoSurprised",
+      "take": "emo_photograph_surprise",
+      "loop": true,
+      "fadeInSec": 0.15,
+      "fadeOutSec": 0.2,
+      "priority": 6,
+      "triggers": ["surprised"],
+      "tags": ["emotion", "pose", "photo"],
+      "note": "HSR PhotoGraph_Surprise：睁大眼 + 抬眉 + 微张嘴 → surprised≈1.0。"
+    },
+    {
+      "id": "photoShy",
+      "take": "emo_photograph_shy",
+      "loop": true,
+      "fadeInSec": 0.2,
+      "fadeOutSec": 0.25,
+      "priority": 5,
+      "presetCaps": { "sad": 0.8 },
+      "triggers": ["shy"],
+      "tags": ["emotion", "pose", "photo"],
+      "note": "HSR PhotoGraph_Shy「害羞」：眼层=笑眼（Close02 基）+ 嘴角下压（困る/心配する 方向）→ preset 只能近似为 sad（丢了笑眼成分）；高保真需 custom 组合，先按 preset 上限 0.8 交付。"
+    },
+    {
+      "id": "photoTrouble",
+      "take": "emo_photograph_trouble",
+      "loop": true,
+      "fadeInSec": 0.2,
+      "fadeOutSec": 0.2,
+      "priority": 4,
+      "presetCaps": { "angry": 0.4 },
+      "triggers": ["trouble"],
+      "tags": ["emotion", "pose", "photo"],
+      "note": "HSR PhotoGraph_Trouble「困扰/不爽」：preset 无直接对应（目标模型 custom やっかい 才是精确解）→ preset 近似 angry≈0.2，上限 0.4。"
+    },
+    {
+      "id": "eyesClosed",
+      "take": "emo_close01_eye",
+      "loop": true,
+      "fadeInSec": 0.12,
+      "fadeOutSec": 0.2,
+      "priority": 3,
+      "triggers": ["eyesClosed"],
+      "tags": ["pose", "eye"],
+      "note": "HSR Close01_Eye：静态闭眼姿态（blink=1.0）；作为「闭眼保持」素材（程序化眨眼之外的手动触发）。"
+    },
+    {
+      "id": "smileEyes",
+      "take": "emo_close02_eye",
+      "loop": true,
+      "fadeInSec": 0.12,
+      "fadeOutSec": 0.2,
+      "priority": 3,
+      "triggers": ["smileEyes"],
+      "tags": ["pose", "eye", "happy"],
+      "note": "HSR Close02_Eye：笑眼（happy=1.0，目标 happy preset 内含 笑い 闭眼笑）。Close03_Eye 的 preset 输出与它相同（custom 才有差异）→ 未重复导出。"
+    },
+    {
+      "id": "stunFace",
+      "take": "emo_battle_stun",
+      "loop": true,
+      "fadeInSec": 0.12,
+      "fadeOutSec": 0.2,
+      "priority": 5,
+      "triggers": ["stun"],
+      "tags": ["reaction", "stun"],
+      "note": "HSR Ani_Battle_Stun：紧闭眼 + 皱鼻/怒眉 → blink=1.0 + angry≈0.6；常值保持。"
+    },
+    {
+      "id": "hitFace",
+      "take": "emo_battle_hit",
+      "loop": false,
+      "fadeInSec": 0.1,
+      "fadeOutSec": 0.25,
+      "priority": 6,
+      "triggers": ["hit"],
+      "tags": ["reaction", "hit", "oneShot"],
+      "note": "HSR Ani_Battle_Hit（1s 一次性）：起始闭眼 → 睁眼怒视（angry≈0.9）；用作受击/DSH error 的口型级反应。"
+    },
+    {
+      "id": "idleShowFace",
+      "take": "emo_idleshow",
+      "loop": true,
+      "fadeInSec": 0.5,
+      "fadeOutSec": 0.5,
+      "priority": 2,
+      "triggers": ["faceIdleShow"],
+      "tags": ["idle", "blink", "loop"],
+      "note": "HSR Ani_Idleshow（8.35s）：待机脸部循环——3 次眨眼脉冲 + 微量眉/嘴扰动；主要价值=眨眼时序，情绪可忽略。"
+    }
+  ],
+  "excluded": {
+    "note": "未导出：emo_default / Default_Brow / Default_Eye / Default_Mouth（中性基线，全零）、emo_blink（5 帧单次眨眼，程序化眨眼已覆盖）、emo_close_eye（与 Close01 同为 blink=1.0）、emo_close03_eye（preset 输出与 Close02 相同，custom 口味差异未采用）。"
+  }
+}

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <!--
+    占位应用图标源文件（512×512，供 C4 打包时转 .icns）。
+    - 全部为自绘几何图形（砂金/骰子主题的占位设计），无第三方素材、无版权问题；
+    - 不是最终美术，后续可由设计稿替换本 SVG 并重跑 assets/icons/generate.mjs。
+  -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#16233f" />
+      <stop offset="1" stop-color="#0a0f1c" />
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffe9a8" />
+      <stop offset="0.5" stop-color="#e8bb4f" />
+      <stop offset="1" stop-color="#a97c1f" />
+    </linearGradient>
+    <radialGradient id="glow" cx="0.32" cy="0.24" r="0.85">
+      <stop offset="0" stop-color="#2b4370" stop-opacity="0.9" />
+      <stop offset="1" stop-color="#0a0f1c" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)" />
+  <rect width="512" height="512" rx="112" fill="url(#glow)" />
+  <rect x="20" y="20" width="472" height="472" rx="96" fill="none" stroke="#e8bb4f" stroke-opacity="0.28" stroke-width="3" />
+  <g transform="rotate(15 256 256)">
+    <rect x="136" y="136" width="240" height="240" rx="52" fill="url(#gold)" />
+    <rect x="140" y="140" width="232" height="232" rx="48" fill="none" stroke="#7a5610" stroke-opacity="0.5" stroke-width="6" />
+    <circle cx="196" cy="196" r="19" fill="#1b2a4a" />
+    <circle cx="256" cy="256" r="19" fill="#1b2a4a" />
+    <circle cx="316" cy="316" r="19" fill="#1b2a4a" />
+  </g>
+</svg>

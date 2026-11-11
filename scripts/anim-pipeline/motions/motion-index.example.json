@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "clips": [
+    {
+      "id": "idle",
+      "file": "motion-idle.vmd",
+      "moods": [
+        "idle"
+      ],
+      "loop": true,
+      "ik": "on",
+      "nominalSpeedPxPerSec": null,
+      "crossfadeMs": 200,
+      "source": "reze-rig 样例 Idle.fbx（UE/Unity humanoid Idle，3.00s 循环）→ reze-rig FBX→VMD（--target-pmx 本模型 --in-place）；reze-rig 样例资产仅本地研究用、禁再分发；本地个人自用",
+      "suppressBones": [
+        "左足先EX",
+        "右足先EX"
+      ]
+    },
+    {
+      "id": "walk",
+      "file": "motion-walk.vmd",
+      "moods": [
+        "walk"
+      ],
+      "loop": true,
+      "ik": "on",
+      "nominalSpeedPxPerSec": 286,
+      "crossfadeMs": 220,
+      "source": "模之屋 走路动作 by qqasd（免费配布；IK 控制骨 + FK 腿；morph 已剥离，表情由 B3 管）",
+      "grounding": "feet",
+      "suppressBones": [
+        "左足先EX",
+        "右足先EX"
+      ]
+    },
+    {
+      "id": "sit",
+      "file": "motion-sit-static.vmd",
+      "moods": [
+        "sit"
+      ],
+      "loop": true,
+      "ik": "on",
+      "nominalSpeedPxPerSec": null,
+      "crossfadeMs": 320,
+      "source": "Mixamo Sitting Laughing f90 安静帧（0.2s 循环）+ microSway 程序化微动；窗沿 hip 锚点",
+      "seatedAnchor": "hips",
+      "grounding": "none",
+      "seatedAnchorOffsetUnits": 3.2,
+      "suppressBones": [
+        "左足先EX",
+        "右足先EX"
+      ],
+      "microSway": true
+    },
+    {
+      "id": "salute",
+      "file": "motion-salute.vmd",
+      "moods": [
+        "dshDone"
+      ],
+      "loop": false,
+      "ik": "on",
+      "nominalSpeedPxPerSec": null,
+      "crossfadeMs": 160,
+      "source": "github.com/nirholas/three.ws animation-sources/Salute.fbx（Mixamo「Salute」导出，2.83s 一次性回应）→ reze-rig --in-place；禁再分发；本地个人自用",
+      "suppressBones": [
+        "左足先EX",
+        "右足先EX"
+      ]
+    },
+    {
+      "id": "reaction",
+      "file": "motion-reaction.vmd",
+      "moods": [
+        "dshError"
+      ],
+      "loop": false,
+      "ik": "on",
+      "nominalSpeedPxPerSec": null,
+      "crossfadeMs": 160,
+      "source": "github.com/nirholas/three.ws animation-sources/Reaction.fbx（Mixamo「Surprised」导出，1.83s 一次性反应）→ reze-rig --in-place；禁再分发；本地个人自用",
+      "suppressBones": [
+        "左足先EX",
+        "右足先EX"
+      ]
+    }
+  ]
+}
